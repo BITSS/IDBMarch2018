@@ -7,23 +7,72 @@ output:
   beamer_presentation:
     slide_level: 2
 ---
-# File Management & Coding Suggestions [15 mins]
+# File Management & Coding Suggestions (Christensen et al, 2018) [15 mins]
 ## File Management [5 mins] 
 ![](files.png)
 
-## Coding Suggestions [10 mins]
-1)	Make sure that your script files are self-contained. That is, don't write a program that only works if you run a group of other files previously in a specific order and then leave things hanging in a certain precarious way. You should be able to run intermediate steps of the workflow without disrupting things downstream.
-2)	Include tests in your code. This can alert you if output ever changes unexpectedly. For example, if merging intermediate datasets and dropping unmatched observations, you could write code to throw an error and alert you if the number of observations changes. (See the Stata example below.)
-3)	You can never comment your code too much. Comments should truly explain what the code is doing rather than merely transliterating: it is more useful to describe x<-1 with "initialize the population count to 1" than "set x equal to 1." Comments should also be checked to make sure they don't go out of date and convey inaccurate information.
-4)	Indent your code. (We are too smart to weigh in on the spaces vs. tabs debate.)
-5)	Once you post or distribute code or data (within your team or to others), any changes at all require a new file name. (Or a version control system in place, see below.)
-6)	Separate your data cleaning and analysis files; don't make any new variables that need saving (or will be used by multiple analysis files) in an analysis file. It is far better to only create a variable once so you know that it is identical when used in different analysis files.
-7)	Never name a file "final" because it won't be, and why do you want to tempt fate? Instead, add a date and author initials or version number.
-8)	Name binary variables "male" instead of "gender," such that 1=Male and 0=Not, so that the name is more informative to someone who comes across it in the future.
-9)	Don't leave clutter around-delete temporary or unnecessary intermediate values. You can use a prefix such as x_ or temp_ so you know which files or variables can easily be deleted later. Stata also has the tempfile and tempvar functionality.
-10)	Every variable should have a label (if this is accommodated in the software you are using).
-11)	Use relative directory paths (such as "./Data" and not "C:/Users/Garret/Documents/Project/Data") so that users on other computers do not have to rename every single reference to a file, and can instead just change or assign a global directory once.
+## Organizing Principles
 
+### 1 - Use code (scripts), don't work by hand (GUI's or comand line).
+### 2 - Consider not saving statistical output, and just saving the code and data that generates it.
+### 3 - Reproducibility. Minimum: machine (laptop) independence. Ideal: analyst indepence. 
+
+## Coding Suggestions [10 mins]
+
+<!--
+1)	Make sure that your script files are self-contained. That is, don't write a program that only works if you run a group of other files previously in a specific order and then leave things hanging in a certain precarious way. You should be able to run intermediate steps of the workflow without disrupting things downstream.  
+-->  
+1) Include tests in your code.   
+<!-- 
+This can alert you if output ever changes unexpectedly. For example, if merging intermediate datasets and dropping unmatched observations, you could write code to throw an error and alert you if the number of observations changes. (See the Stata example below.)
+-->
+2) You can never comment your code too much.   
+<!-- Comments should truly explain what the code is doing rather than merely transliterating: it is more useful to describe x<-1 with "initialize the population count to 1" than "set x equal to 1." Comments should also be checked to make sure they don't go out of date and convey inaccurate information.
+--> 
+3) Indent your code.   
+4) Once posted, any changes at all require a new file name. Or a version control system in place.  
+5) Separate your data cleaning and analysis files
+<!-- don't make any new variables that need saving (or will be used by multiple analysis files) in an analysis file. It is far better to only create a variable once so you know that it is identical when used in different analysis files.
+-->  
+6) Never name a file "final" because it won't be.
+<!-- , and why do you want to tempt fate? Instead, add a date and author initials or version number.
+-->  
+7) Name binary variables "male" instead of "gender," (1=Male and 0=Not)
+
+8) Don't leave clutter around-delete temporary or unnecessary intermediate objects. 
+<!-- You can use a prefix such as x_ or temp_ so you know which files or variables can easily be deleted later. Stata also has the tempfile and tempvar functionality.  
+-->  
+9) Every variable should have a label. 
+
+10) Use relative directory paths (such as "./Data" and not "C:/Users/Fernando/Documents/Project/Data") 
+
+## Coding Suggestions: Stata-specific
+1)	Accurately and concisely capture missing values. (`.` and `.a-.z`)
+<!-- There are multiple reasons that a value might be blank. To fully convey this, use the full set of missing values available to you (".a"-".z", not exclusively ".") in order to distinguish between "don't know" and "didn't ask," or other distinct reasons for missing data. 
+-->
+2)	Make sure code always produces the same result, and that merging and sorting is reproducible. `duplicates report; isid; sort, stable`  
+
+3)	Run simple tests to alert yourself when results change. Example:
+
+        count if _merge!=3
+        if r(N)!=74 {
+        display "Unmatched observations changed!"
+        there is an error here
+        } 
+4)	Don't use abbreviations for variables or commands.
+5)	Use global macros to define directory paths so collaborators can readily work across different computers.
+6)	Use local macros for varlists.
+
+## Coding Suggestions: Stata-specific
+7)	Use computer-stored versions of numerical output (eg `r(mean)`). Use `return list` and `ereturn list`
+8)	If you have a master .do file that calls other .do files, which each have their own .log file capturing output, you can run multiple log files at the same time (so you end up with a master .log file)
+9)	Use the `label data` and `notes`.
+10)	Use the `notes` command for variables as well for identifying information that is too long for the variable label.
+ 
+11)	Validate data sources to ensure consistency. Use `datasignature` on auto data set (`sysuse auto.dta`, then `datasignature set` should give you this number: `74:12(71728):3831085005:1395876116`) 
+12)	Use value labels for all categorical variables. `numlabel [lblname-list], add command.`  
+13)	Don't use capital letters in variable names.
+14)	Make your files as non-proprietary as possible (use the `saveold` command) 
 
 
 # Version Control [30 mins]

@@ -1,7 +1,7 @@
 ---
 title: "Registration, Pre-Analysis Plans and Reporting Guidelines"
 subtitle: "Introduction, Hands-on with the Open Science Framework (OSF) and AEA Registry"  
-author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/VbiKb4>\n"
+author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
 output: 
   beamer_presentation:
@@ -13,6 +13,34 @@ output:
 
 # Little experiment [10mins]
 
+## Explanation to participants
+
+### Read and complete the sheet: DO NOT LOOK AT OTHERS SHEETS
+
+### Go to the website bellow and complete with your answers.
+
+\begin{center}
+\LARGE{https://goo.gl/aj8W61}  
+\end{center}
+
+## Explanation to researchers
+
+### You just participated in (highly simplified) version of **The Ultimatum Game**
+
+### The goal of the UG is to measure attitudes about fairness and/or expectations about (econ) rational behavior. 
+
+### Our little experiment was trying to measure if the responses to the UG can be anchored by a completly irrelevant number:
+The ID number at the beginning of your sheet!
+
+## Explanation to researchers
+
+### Treatment was receiving an ID number between 960 and 999.
+### Control receive an ID number between 10 and 49.
+
+### Outcome: Offer made in the UG
+
+### For the hands-on excercise, you can use this experiment, or work with your own paper/project. 
+
 # Registration: [40 mins]
 
 ## Why Register? Publication Bias
@@ -21,19 +49,26 @@ output:
 ## Hands-on Registration.
 Based on a project of your own, or on our little experiment:  
 
- - Create a draft of a AEA Registry (emph IRB)  
- - Explore OSF:  
-     - AsPredicted  
-     - Open format  
+ - Create a draft of using [Open Science Framework](osf.io) at [osf.io](osf.io):  
+     - Open format
+     - AsPredicted (will work with this one)
+  
+ - Explore [AEA Registry](www.socialscienceregistry.org) at [www.socialscienceregistry.org](www.socialscienceregistry.org)
 
-## Registration of our Little Experiment [THIS SLIDE WILL ONLY BE AVAILABLE AFTER THE WORKSHOP]
-Using Aspredicted format:  
-   - **Research question:** Does exposure to a large number increases the offer made in the ultimatum game?  
-   - **Dependent variable:** Amount offered in the ultimatum game.   
-   - **Manipulation/Conditions:**  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question. 
-   - **Analyses:** OLS regression of amount offer as dependant variable and treatment as regressor.   
-   - **Outliers and Exclusions:** Will exclude participants with missing information in any field. Amounts beyond plausible values (eg offers above max dollar value) will be will be top-coded.   
-   - **Sample size: ** We will define our sample by the number of participants in the workshop.   
+## Registration of our Little Experiment 
+Using Aspredicted format:    
+\pause  
+ - **Research question:** Does exposure to a large number increases the offer made in the ultimatum game?  
+\pause  
+ - **Dependent variable:** Amount offered in the ultimatum game.   
+\pause  
+ - **Manipulation/Conditions:**  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question.   
+\pause    
+ - **Analyses:** OLS regression of amount offer as dependant variable and treatment as regressor.     
+\pause    
+ - **Outliers and Exclusions:** Will exclude participants with missing information in any field. Amounts beyond plausible values (eg offers above max dollar value) will be will be top-coded.   
+\pause  
+ - **Sample size: ** We will define our sample by the number of participants in the workshop.   
 
 # Pre-analysis Plan. [20mins]
 
@@ -43,12 +78,25 @@ Using Aspredicted format:
 ## Why Do We Need PAPs? (cont)
 
 * Increases replicability  
-* 
+* Distinguishes exploratory from confirmatory analysis  
+* You can win $1000!
 
-## How to do a PAP?
-Mckenzie bullet point  
+## How to do a PAP? McKenzie Suggestions
+[World Bank Development Impact Blog](http://blogs.worldbank.org/impactevaluations/a-pre-analysis-plan-checklist)
 
-## How to do a PAP?
+ - Description of the sample to be used in the study  
+ - Key data sources  
+ - Hypotheses to be tested throughout the causal chain  
+ - Specify how variables will be constructed  
+ - Specify the treatment effect equation to be estimated  
+ - What is the plan for how to deal with multiple outcomes and multiple
+  hypothesis testing?  
+ - Procedures to be used for addressing survey attrition  
+ - How will the study deal with outcomes with limited variation?  
+ - If you are going to be testing a model, include the model  
+ - Remember to archive it  
+
+## How to do a PAP? Specific Resources 
  - Pre-reg Challenge (emph IRB)  
  - RR at JDE
 
@@ -57,10 +105,10 @@ Mckenzie bullet point
 
 ## Why Do We Need Reporting Guidelines?  
 Defines minimal set of elements required in a scientific paper. 
-Helps with:
- - Structured PAPs
- - Replicability  
- - Meta-analysis  
+Helps with:  
+ - Structured PAPs  
+ - Replicability    
+ - Meta-analysis    
  
  
 ## How to follow Reporting Guidelines  

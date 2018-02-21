@@ -28,9 +28,10 @@ df %>%
 
 cbind(sapply(state.abb, function(x) (t.test(dice~treatment, data = df[df$state == x, ])$p.value)))
 
-
+#https://www.khanacademy.org/test-prep/mcat/critical-analysis-and-reasoning-skills-practice-questions/critical-analysis-and-reasoning-skills-tutorial/e/the-ultimatum-game
 library(googlesheets)
 resp <- gs_title("Quick survey")
+
 df <- gs_read(resp)
 # create treatment var
 df$treatment <- as.integer(df$`ID number`<=500)

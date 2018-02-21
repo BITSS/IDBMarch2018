@@ -1,17 +1,19 @@
 ---
 title: "Reproducible Workflow: Coding Strategies and Software [75mins]"
-subtitle: "Introduction, Hands-on with the Version Control (Github) and Dynamic Documents (RMarkdown)"  
-author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/VbiKb4>\n"
+subtitle: "Introduction, Hands-on with Version Control (Github) and Dynamic Documents (RMarkdown)"  
+author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
 output: 
   beamer_presentation:
     slide_level: 2
 ---
 # File Management & Coding Suggestions [15 mins]
-
 ## File Management [5 mins] 
+![](files.png)
 
 ## Coding Suggestions [10 mins]
+### sdfsd
+### sdfds
 
 # Version Control [30 mins]
 
@@ -111,4 +113,9 @@ g <- create_graph(ndf,
 render_graph(g)
 
 ```
+
+## Balance of covariates 
+
+## Estimated effect
+
 

@@ -12,10 +12,28 @@ output:
 ![](files.png)
 
 ## Coding Suggestions [10 mins]
-### sdfsd
-### sdfds
+1)	Make sure that your script files are self-contained. That is, don't write a program that only works if you run a group of other files previously in a specific order and then leave things hanging in a certain precarious way. You should be able to run intermediate steps of the workflow without disrupting things downstream.
+2)	Include tests in your code. This can alert you if output ever changes unexpectedly. For example, if merging intermediate datasets and dropping unmatched observations, you could write code to throw an error and alert you if the number of observations changes. (See the Stata example below.)
+3)	You can never comment your code too much. Comments should truly explain what the code is doing rather than merely transliterating: it is more useful to describe x<-1 with "initialize the population count to 1" than "set x equal to 1." Comments should also be checked to make sure they don't go out of date and convey inaccurate information.
+4)	Indent your code. (We are too smart to weigh in on the spaces vs. tabs debate.)
+5)	Once you post or distribute code or data (within your team or to others), any changes at all require a new file name. (Or a version control system in place, see below.)
+6)	Separate your data cleaning and analysis files; don't make any new variables that need saving (or will be used by multiple analysis files) in an analysis file. It is far better to only create a variable once so you know that it is identical when used in different analysis files.
+7)	Never name a file "final" because it won't be, and why do you want to tempt fate? Instead, add a date and author initials or version number.
+8)	Name binary variables "male" instead of "gender," such that 1=Male and 0=Not, so that the name is more informative to someone who comes across it in the future.
+9)	Don't leave clutter around-delete temporary or unnecessary intermediate values. You can use a prefix such as x_ or temp_ so you know which files or variables can easily be deleted later. Stata also has the tempfile and tempvar functionality.
+10)	Every variable should have a label (if this is accommodated in the software you are using).
+11)	Use relative directory paths (such as "./Data" and not "C:/Users/Garret/Documents/Project/Data") so that users on other computers do not have to rename every single reference to a file, and can instead just change or assign a global directory once.
+
+
 
 # Version Control [30 mins]
+
+## Problem to avoid
+![http://www.phdcomics.com/comics/archive/phd101212s.gif](http://www.phdcomics.com/comics/archive/phd101212s.gif)
+
+## Managing expectations
+![Git xkcd comic](https://imgs.xkcd.com/comics/git.png)
+
 
 # Dynamic Documents [30 mins]
 
@@ -118,4 +136,4 @@ render_graph(g)
 
 ## Estimated effect
 
-
+## The Stata version of all of the above: 

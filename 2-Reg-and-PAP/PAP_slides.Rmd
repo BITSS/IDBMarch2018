@@ -116,3 +116,10 @@ Helps with:
  - Recent APA guidelines.
  - JDE suggested guidelines for register reports. 
  
+## CONSORT Guidelines & EQUATOR network.
+![](Consort1.png)
+
+
+## CONSORT Guidelines & EQUATOR network.
+![](Consort2.png)  
+EQUATOR Network: website containing more than 300 other guidelines.

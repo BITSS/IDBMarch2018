@@ -1,0 +1,114 @@
+---
+title: "Reproducible Workflow: Coding Strategies and Software [75mins]"
+subtitle: "Introduction, Hands-on with the Version Control (Github) and Dynamic Documents (RMarkdown)"  
+author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/VbiKb4>\n"
+date: "Inter-American Development Bank Workshop, March 2018"
+output: 
+  beamer_presentation:
+    slide_level: 2
+---
+# File Management & Coding Suggestions [15 mins]
+
+## File Management [5 mins] 
+
+## Coding Suggestions [10 mins]
+
+# Version Control [30 mins]
+
+# Dynamic Documents [30 mins]
+
+```{r consort diagram, echo=FALSE}
+#install.packages("DiagrammeRsvg")
+# this codes comes from:
+# https://scriptsandstatistics.wordpress.com/2017/12/22/how-to-draw-a-consort-flow-diagram-using-r-and-graphviz/
+library(DiagrammeR)
+library(DiagrammeRsvg)
+library(rsvg)
+library(webshot)
+
+#webshot::install_phantomjs()
+
+
+# Values ------------------------------------------------------------------
+values <- c(210, 10, 200, 100, 100, 10, 10, 90, 90)
+ 
+# Defining Text Labels ----------------------------------------------------
+text <- c('Assessment for\neligibility',
+          'Excluded',
+          'Randomized',
+          'Allocated to\nintervention',
+          'Allocated to\nintervention',
+          'Lost to follow-up',
+          'Lost to follow-up',
+          'Analysed',
+          'Analysed')
+ 
+# Defining Function -------------------------------------------------------
+paste1 <- function(x, y){
+  paste0(x, ' (n=', y, ')')
+}
+ 
+# Concatenating Values and Text Labels ------------------------------------
+LABS <- paste1(text, values)
+
+
+ndf <-
+  create_node_df(
+    n = 21,
+    label = c('Enrollment', 'Allocation', 'Follow-Up', 'Analysis',
+              LABS, rep("", 8)),
+    style = c(rep("solid", 13), rep('invis', 8)),
+    shape = c(rep("plaintext", 4), 
+              rep("box", 9),
+              rep("point", 8)),
+    width = c(rep(2, 4), rep(2.5, 9), rep(0.001, 8)),
+    hight = c(rep(0.5, 13), rep(0.001, 8)),
+    fontsize = c(rep(14, 4), rep(10, 17)),
+    fontname = c(rep('Arial Rounded MT Bold', 4), rep('Courier New', 17)),
+    penwidth = 2.0,
+    fixedsize = "true")
+
+edf <-
+  create_edge_df(
+    arrowhead = c(rep('none', 3), rep("vee", 3), rep('none', 2), "vee", rep('none', 6),
+                  rep("vee", 3), rep("none", 3), "vee", rep("none", 10)),
+    color = c(rep('#00000000', 3), rep('black', 6), rep('#00000000', 6),
+              rep('black', 3), rep('#00000000', 3), rep('black', 1),
+              rep('#00000000', 2), rep('black', 2), 
+              rep('#00000000', 6)),
+    constraint = c(rep("true", 18), rep('false', 14)),
+    from = c(1, 19, 20, 16, 8, 10, # column 1
+             5, 14, 7, 15, 2, 3, # column 2
+             18, 6, 21, 17, 9, 11, # column 3
+             1, 5, # row 1
+             19, 14, # row 2
+             20, 7, # row 3
+             16, 15, # row 4
+             8, 2, # row 5
+             10, 3, # row 6
+             12, 4), # row 7
+    to = c(19, 20, 16, 8, 10, 12, # column 1
+           14, 7, 15, 2, 3, 4, # column 2
+           6, 21, 17, 9, 11, 13, # column 3
+           5, 18, # row 1
+           14, 6, # row 2
+           7, 21, # row 3
+           15, 17, # row 4
+           2, 9, # row 5
+           3, 11, # row 6
+           4, 13)) # row 7
+
+# Create Graph ------------------------------------------------------------
+g <- create_graph(ndf, 
+                  edf,
+                  attr_theme = NULL)
+ 
+
+```
+## CONSORT diagram of our little experiment
+```{r, echo=FALSE}
+# Plotting ----------------------------------------------------------------
+render_graph(g)
+
+```
+

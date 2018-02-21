@@ -1,0 +1,70 @@
+---
+title: "Registration, Pre-Analysis Plans and Reporting Guidelines"
+subtitle: "Introduction, Hands-on with the Open Science Framework (OSF) and AEA Registry"  
+author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/VbiKb4>\n"
+date: "Inter-American Development Bank Workshop, March 2018"
+output: 
+  beamer_presentation:
+    slide_level: 2
+---
+
+
+
+
+# Little experiment [10mins]
+
+# Registration: [40 mins]
+
+## Why Register? Publication Bias
+![](Tess.png)
+
+## Hands-on Registration.
+Based on a project of your own, or on our little experiment:  
+
+ - Create a draft of a AEA Registry (emph IRB)  
+ - Explore OSF:  
+     - AsPredicted  
+     - Open format  
+
+## Registration of our Little Experiment [THIS SLIDE WILL ONLY BE AVAILABLE AFTER THE WORKSHOP]
+Using Aspredicted format:  
+   - **Research question:** Does exposure to a large number increases the offer made in the ultimatum game?  
+   - **Dependent variable:** Amount offered in the ultimatum game.   
+   - **Manipulation/Conditions:**  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question. 
+   - **Analyses:** OLS regression of amount offer as dependant variable and treatment as regressor.   
+   - **Outliers and Exclusions:** Will exclude participants with missing information in any field. Amounts beyond plausible values (eg offers above max dollar value) will be will be top-coded.   
+   - **Sample size: ** We will define our sample by the number of participants in the workshop.   
+
+# Pre-analysis Plan. [20mins]
+
+## Why Do We Need PAPs?
+![](GoBifo1.PNG)
+
+## Why Do We Need PAPs? (cont)
+
+* Increases replicability  
+* 
+
+## How to do a PAP?
+Mckenzie bullet point  
+
+## How to do a PAP?
+ - Pre-reg Challenge (emph IRB)  
+ - RR at JDE
+
+ 
+# Reporting Guidelines [20mins]
+
+## Why Do We Need Reporting Guidelines?  
+Defines minimal set of elements required in a scientific paper. 
+Helps with:
+ - Structured PAPs
+ - Replicability  
+ - Meta-analysis  
+ 
+ 
+## How to follow Reporting Guidelines  
+ - CONSORT Guidelines & EQUATOR network.
+ - Recent APA guidelines.
+ - JDE suggested guidelines for register reports. 
+ 

@@ -179,7 +179,7 @@ To write inline use only one Backtick to open followed by an "r"" and one to clo
 
 
 ## Hands-on!
-```{r folder setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+```{r folder setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
 cwd <- getwd() 
 setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
 
@@ -211,14 +211,39 @@ aux.1 <- gs_title("Quick survey")
 df <- gs_read(aux.1)
 write_csv(df, path = "rawdata/raw_data.csv")
 
+#upload  
+
 setwd(cwd)
 rm(token)
 unlink("googlesheets_token.rds", recursive = TRUE)
+
+#id <- fs_create("Little Experiment", "test data")
+#fs_upload(id, "rawdata/raw_data.csv")
+
 ```
 
 
 
 ```{r consort diagram, echo=FALSE}
+
+#download.file("https://ndownloader.figshare.com/files/10553269",
+#              "raw_data.csv")
+
+df <- read_csv(file = "UG_anchoring/rawdata/raw_data.csv")
+# create treatment var
+df$treatment <- as.integer(df$`ID number`<=500)
+
+table(df$treatment)
+# Define outcome
+
+# handle missing and outliers
+
+# Balance tables (cobalt)
+
+# Estimate effect 
+lm(`Dollar value to question #1`~ `treatment`, data=df)
+
+
 #install.packages("DiagrammeRsvg")
 # this codes comes from:
 # https://scriptsandstatistics.wordpress.com/2017/12/22/how-to-draw-a-consort-flow-diagram-using-r-and-graphviz/
@@ -227,7 +252,7 @@ library(DiagrammeRsvg)
 library(rsvg)
 library(webshot)
 
-#webshot::install_phantomjs()
+# webshot::install_phantomjs()
 
 
 # Values ------------------------------------------------------------------

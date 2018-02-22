@@ -86,6 +86,138 @@ This can alert you if output ever changes unexpectedly. For example, if merging 
 
 # Dynamic Documents [30 mins]
 
+
+
+## Dynamic Documents For Computational Reproducibility
+- Based on principles of *literate programming* aims at combining code and paper in one single document 
+- Best framework to achieve the holy grail of **one-click reproducible workflow**
+- Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is catching up (more at the end)
+
+## Currently code and narrative components live in separate universes 
+![](./Two universes.png)   
+
+
+## Dynamic Documents: integrate the two universes!  
+![](./One universe.png)
+
+  
+## Dynamic Documents: A Recipe  
+
+- 1 simple language that can combine text and code: `Markdown` 
+- 1 statistical package to do the analysis (`R`, `Python`, `3S's?`)
+- 1 machinery to combine analysis and text to create a single output: `Pandoc`
+- [Optional-but-not-really] 1 program to bring all the elements together: RStudio/RMarkdown, Jupyter
+
+## Markdown laguange/syntax in 60 seconds
+![](./RStudioCS.png)
+
+# One Type of Dynamic Document: R Markdown
+
+## For our excercise: R Markdown  
+
+- `R`: **open source** programming language design for statistical analysis.   
+- RStudio: free software that provides and Integrated Development Environment (IDE)  
+- RStudio combines all together: R + Markdown + Pandoc to produce multiple outputs
+![](http://rmarkdown.rstudio.com/images/RMarkdownFlow.png)  
+
+
+## R Markdown  
+![](http://rmarkdown.rstudio.com/images/RMarkdownOutputFormats.png)
+
+## Basic Structure
+
+- A header
+- Text
+- Code: inline and chunks
+
+## Basic Structure: Header
+
+
+
+```{r smpl yml, eval=FALSE, echo=TRUE}
+---
+title: "Sample Paper"
+author: "Fernando Hoces de la Guardia"
+output: html_document
+---
+```  
+
+
+
+
+## Basic Structure: Body of Text
+
+```{r smpl_yml1, eval=FALSE, echo=TRUE}
+---
+header
+---
+```
+
+This is where you write your paper. Nothing much to add. You can check Markdown [syntax here](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf). And it can use can type equations using LaTex syntax!
+
+## Basic Structure: Code Chunks and Inline
+
+```{r smpl_yml2, eval=FALSE, echo=TRUE}
+---
+header
+---
+```
+
+Body of text. 
+
+
+To begin a piece of code ("code chunk"). Enclose them in the following expression (Ctrl/Cmd + shift/optn + i) 
+
+````
+```{r, eval=TRUE}`r ''`
+here goes the code
+```
+````
+
+To write inline use only one Backtick to open followed by an "r"" and one to close `` `r
+1+1` `` in the output.
+
+
+## Hands-on!
+```{r folder setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+cwd <- getwd() 
+setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
+
+library(googlesheets)
+suppressMessages(library(tidyverse))
+token <- gs_auth()
+saveRDS(token, file = "googlesheets_token.rds")
+suppressMessages(gs_auth(token = "googlesheets_token.rds", verbose = FALSE))
+
+
+if ( c("UG_anchoring") %in% dir() ) {
+  unlink("UG_anchoring", recursive = TRUE)
+}
+
+dir.create("UG_anchoring")
+
+setwd("UG_anchoring")
+dir.create("rawdata")
+dir.create("data")
+dir.create("documentation")
+dir.create("output")
+dir.create("paper")
+dir.create("scripts")
+
+#readme_file <- file.path("README.md")
+writeLines("# Little Experiment", "README.md")
+
+aux.1 <- gs_title("Quick survey")
+df <- gs_read(aux.1)
+write_csv(df, path = "rawdata/raw_data.csv")
+
+setwd(cwd)
+rm(token)
+unlink("googlesheets_token.rds", recursive = TRUE)
+```
+
+
+
 ```{r consort diagram, echo=FALSE}
 #install.packages("DiagrammeRsvg")
 # this codes comes from:
@@ -186,3 +318,13 @@ render_graph(g)
 ## Estimated effect
 
 ## The Stata version of all of the above: 
+
+
+## Additional Resources
+### Garret, Ted and Jeremy's book
+### The Practice of Reproducible Research   
+### Code and Data for the Social Sciences  
+### The Workflow of Data Analysis Using Stata  
+### Reproducible Research with R and R Studio  
+### Project TIER
+

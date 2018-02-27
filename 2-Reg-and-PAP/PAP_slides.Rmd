@@ -43,8 +43,21 @@ The ID number at the beginning of your sheet!
 
 # Registration: [40 mins]
 
-## Why Register? Publication Bias
+## Why Register? Publication Bias [1 min version]
 ![](Tess.png)
+
+## Why Register? Publication Bias [10 min version]
+### Effect sizes diminish with sample size (Gerber, Green, Nickerson 2001).
+
+### There is a higher fraction of rejected hypothesis tests in social compared to hard sciences (Fanelli 2010).
+
+### Published null results are disappearing over time, in all disciplines (Fanelli 2011).
+
+### The file drawer problem is large. (Turner et al 2008, Franco et al. 2014)
+
+![](TurnerFigure1.png)
+![](Tess.png)
+
 
 ## Hands-on Registration.
 Based on a project of your own, or on our little experiment:  

@@ -6,6 +6,8 @@ date: "Inter-American Development Bank Workshop, March 2018"
 output: 
   beamer_presentation:
     slide_level: 2
+editor_options: 
+  chunk_output_type: console
 ---
 # File Management & Coding Suggestions (Christensen et al, 2018) [15 mins]
 ## File Management [5 mins] 
@@ -179,7 +181,7 @@ To write inline use only one Backtick to open followed by an "r"" and one to clo
 
 
 ## Hands-on!
-```{r folder setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE, eval=TRUE}
+```{r folder setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
 cwd <- getwd() 
 setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
 
@@ -228,20 +230,78 @@ unlink("googlesheets_token.rds", recursive = TRUE)
 
 #download.file("https://ndownloader.figshare.com/files/10553269",
 #              "raw_data.csv")
+setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
 
 df <- read_csv(file = "UG_anchoring/rawdata/raw_data.csv")
 # create treatment var
-df$treatment <- as.integer(df$`ID number`<=500)
+df <- df %>% mutate("treatment" = 
+                      ifelse(`ID number` >= 950 & `ID number` <= 1000,1,NA)) %>% 
+  mutate("treatment" = replace(treatment, `ID number` >= 10 & `ID number` <= 50, 0) )
+# create a treatment var that treats out of range values as indicators of how the number
+# was read, and defines treatment for any value above 500, and control otherwise
+df <- df %>% mutate("treatment_generous" = 
+                      ifelse(`ID number` >= 500,1,0))
 
-table(df$treatment)
-# Define outcome
+with(df, table(treatment, treatment_generous, useNA = "ifany"))
 
+
+# Define outcome AQUI VOY
+# Three sensible ways to define outcome:
+# (1) answer to Q1 in levels, (2) answer to Q2 en levels, 
+# (3) weighted average of Q1 and Q2 as fractions
+
+df <- df %>% mutate("outcome_1" = `Dollar value to question #1`,
+                    "outcome_2" = `Dollar value to question #2`) %>%
+  rowwise() %>%
+             mutate("outcome_3" = mean(c(outcome_1 / 1000, outcome_2 / 10),
+                            na.rm = TRUE))
 # handle missing and outliers
+# 1 -  Values out of range: 
+# Outcome and treatment variables: if close to plausible, then top code (<20% off). 
+df <- df %>% mutate("treatment" = 
+                      replace(treatment, 
+                              `ID number` >= 0.8*950 & `ID number` <= 1.2*1000, 1), 
+                    "treatment" = 
+                      replace(treatment, 
+                              `ID number` >= 0.8*10 & `ID number` <= 1.2*50, 0) , 
+                    "outcome_1" = 
+                      replace(outcome_1, 
+                              outcome_1 > 1000 & outcome_1 <= 1.2*1000, 1000),
+                    "outcome_2" = 
+                      replace(outcome_2, 
+                              outcome_2 > 10 & outcome_2 <= 1.2*10, 10),
+                    "outcome_3" = 
+                      replace(outcome_3, 
+                              outcome_3 > 1 & outcome_3 <= 1.2*1, 1)
+                    )
+library(lubridate)
+# Will exclude any observation that responded before begining the seminar, or after. 
+seminar_begins <- Sys.time()
+mdy_hms(df$Timestamp) - seminar_begins
+# Missing values will be coded as NA
+# Missing in either outcome or treatment var -> excluded variable
+# Missing in covariates will be exlcuded of their corresponging analysis but keep for unconditional analysis. 
+# There will be no additional treatment of outliers
 
-# Balance tables (cobalt)
+# Balance tables t.test(asd~treatment_generous, data = df, var.equal = T)
+# row 1 intercept (mean for control group)
+# col 1 estimates AQUI VOY
+covariates <- c("name1", "name2")
+balance.table <- data.frame(row.names = covariates, 
+                            "mean_control" = rep(NA,length(covariates)), 
+                            "diff" = rep(NA,length(covariates)), 
+                            "sd" = rep(NA,length(covariates)))
+aux.2 <- summary(lm(asd~treatment_generous, data = df))$coefficients[, 1:2]
 
 # Estimate effect 
-lm(`Dollar value to question #1`~ `treatment`, data=df)
+lm(outcome_1 ~ treatment, data=df)
+lm(outcome_1 ~ treatment_generous, data=df)
+
+# Estimate effect with covariates
+
+# Repeat excluding late responders
+
+# Repeat excluding outliers
 
 
 #install.packages("DiagrammeRsvg")

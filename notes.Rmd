@@ -38,12 +38,21 @@ df$treatment <- as.integer(df$`ID number`<=500)
 
 # Define outcome
 
-# handle missing and outliers
+# handle missing and outliers 0.2573  
 
-# Balance tables
+# Balance tables t.test(asd~treatment_generous, data = df, var.equal = T)
+# row 1 intercept (mean for control group)
+# col 1 estimates AQUI VOY
+covariates <- c("name1", "name2")
+balance.table <- data.frame(row.names = covariates, 
+                            "mean_control" = rep(NA,length(covariates)), 
+                            "diff" = rep(NA,length(covariates)), 
+                            "sd" = rep(NA,length(covariates)))
+aux.2 <- summary(lm(asd~treatment_generous, data = df))$coefficients[, 1:2]
 
 # Estimate effect 
-lm(`Dollar value to question #1`~ `treatment`, data=df)
+lm(outcome_1~ treatment, data=df)
+lm(outcome_1~ treatment_generous, data=df)
 
 # Estimate effect with covariates
 

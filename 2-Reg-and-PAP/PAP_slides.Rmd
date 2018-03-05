@@ -41,10 +41,15 @@ The ID number at the beginning of your sheet!
 
 ### For the hands-on excercise, you can use this experiment, or work with your own paper/project. 
 
-# Registration: [40 mins]
+# Registration & PAP: What
 
-## Why Register? Publication Bias [1 min version]
-![](Tess.png)
+## What is a Registration and a PAP?  
+
+### Registration: 
+
+### PAP: 
+
+# Registration & PAP: Why
 
 ## Why Register? Publication Bias [10 min version]
 ### Effect sizes diminish with sample size (Gerber, Green, Nickerson 2001).
@@ -55,8 +60,33 @@ The ID number at the beginning of your sheet!
 
 ### The file drawer problem is large. (Turner et al 2008, Franco et al. 2014)
 
+## Publication Bias in FDA Aproved Drugs
 ![](TurnerFigure1.png)
+
+## Publication Bias Across Social Science
 ![](Tess.png)
+
+## Why Do We Need PAPs?
+![](GoBifo1.PNG)
+
+## Why Do We Need PAPs? The Social Planner View (Haushofer, 2017)
+
+**Benefits:**  
+1. Improves transparency: clear ex ante what the researcher planned  
+2. Reduces false positives: fewer forking paths, less p-hacking  
+3. Reduces the filedrawer problem; others can ask what happened to your project. 
+
+\pause
+
+**Costs:**    
+1. Time cost. I don’t think this is very large, see below.  
+2. Stifles exploratory work. I don’t think this is true, see below.  
+3. Pre-specifying the wrong analyses (ex ante or ex post). This is potentially serious.   
+
+**Reducing costs:**    
+1. Time cost: make the PAP your methods section later.  
+2. Exploratory work: datamine to your heart’s delight! Just be honest about it.  
+3. Pre-specifying the wrong analyses: Be honest about your thought process and hope for sensible readers/referees.  
 
 
 ## Hands-on Registration.
@@ -83,16 +113,18 @@ Using Aspredicted format:
 \pause  
  - **Sample size: ** We will define our sample by the number of participants in the workshop.   
 
-# Pre-analysis Plan. [20mins]
+## How to do a PAP? Glennerster & Takavarasha Suggestions  
 
-## Why Do We Need PAPs?
-![](GoBifo1.PNG)
+Report:  
 
-## Why Do We Need PAPs? (cont)
+ - The main outcome measures.  
+ - Which outcome measures are primary and which are secondary.  
+ - The precise composition of any families that will be used for mean effects analysis.  
+ - The subgroups that will be analyzed.  
+ - The direction of expected impact if we want to use a one-sided test.   
+ - The primary specification to be used for the analysis.  
 
-* Increases replicability  
-* Distinguishes exploratory from confirmatory analysis  
-* You can win $1000!
+
 
 ## How to do a PAP? McKenzie Suggestions
 [World Bank Development Impact Blog](http://blogs.worldbank.org/impactevaluations/a-pre-analysis-plan-checklist)
@@ -112,6 +144,24 @@ Using Aspredicted format:
 ## How to do a PAP? Specific Resources 
  - Pre-reg Challenge (emph IRB)  
  - RR at JDE
+
+
+## Difference between Registration and PAP?
+
+ - Key difference is the amount of detail/effort. 
+  - Registration: very easy, goal is to address publication bias. 
+  - PAP: 
+ - It is more a matter of degree. 
+![](degree.png)
+
+
+## When should you do a PAP or a Registration?
+
+Time dimention. 
+
+Research design dimension. 
+
+
 
  
 # Reporting Guidelines [20mins]
@@ -136,3 +186,16 @@ Helps with:
 ## CONSORT Guidelines & EQUATOR network.
 ![](Consort2.png)  
 EQUATOR Network: website containing more than 300 other guidelines.
+
+
+## How 
+
+### Registries: OSF/AEA/Others
+
+### Follow guidelines
+
+## Registries
+
+Description
+
+## Guidelines

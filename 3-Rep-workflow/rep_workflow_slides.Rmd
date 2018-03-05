@@ -77,16 +77,16 @@ This can alert you if output ever changes unexpectedly. For example, if merging 
 14)	Make your files as non-proprietary as possible (use the `saveold` command) 
 
 
-# Version Control [30 mins]
+# Version Control +  DD [30/35 mins]
 
-## Problem to avoid
+## Version Control Problem to avoid [15]
 ![http://www.phdcomics.com/comics/archive/phd101212s.gif](http://www.phdcomics.com/comics/archive/phd101212s.gif)
 
 ## Managing expectations
 ![Git xkcd comic](https://imgs.xkcd.com/comics/git.png)
 
 
-# Dynamic Documents [30 mins]
+# Dynamic Documents [20 mins]
 
 
 
@@ -110,6 +110,7 @@ This can alert you if output ever changes unexpectedly. For example, if merging 
 - 1 machinery to combine analysis and text to create a single output: `Pandoc`
 - [Optional-but-not-really] 1 program to bring all the elements together: RStudio/RMarkdown, Jupyter
 
+<!--
 ## Markdown laguange/syntax in 60 seconds
 ![](./RStudioCS.png)
 
@@ -178,10 +179,10 @@ here goes the code
 
 To write inline use only one Backtick to open followed by an "r"" and one to close `` `r
 1+1` `` in the output.
-
+--> 
 
 ## Hands-on!
-```{r folder setup, echo=FALSE, eval=TRUE, warning=FALSE, message=FALSE, eval=FALSE}
+```{r folder setup, echo=FALSE, eval=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 cwd <- getwd() 
 setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
 
@@ -226,7 +227,7 @@ unlink("googlesheets_token.rds", recursive = TRUE)
 
 
 
-```{r consort diagram, echo=FALSE}
+```{r consort diagram, echo=FALSE, eval=FALSE}
 
 #download.file("https://ndownloader.figshare.com/files/10553269",
 #              "raw_data.csv")
@@ -392,7 +393,7 @@ g <- create_graph(ndf,
 
 ```
 ## CONSORT diagram of our little experiment
-```{r, echo=FALSE}
+```{r, echo=FALSE, eval=FALSE}
 # Plotting ----------------------------------------------------------------
 render_graph(g)
 
@@ -412,4 +413,5 @@ render_graph(g)
 ### The Workflow of Data Analysis Using Stata  
 ### Reproducible Research with R and R Studio  
 ### Project TIER
+### Great intro to GitHub by Jenny Bryan
 

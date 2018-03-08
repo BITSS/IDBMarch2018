@@ -1,11 +1,15 @@
 ---
 title: "Registration, Pre-Analysis Plans and Reporting Guidelines"
-subtitle: "Introduction, Hands-on with the Open Science Framework (OSF) and AEA Registry"  
 author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
-output: 
+output:
   beamer_presentation:
     slide_level: 2
+    fig_caption: no
+  slidy_presentation: default
+subtitle: Introduction, Hands-on with the Open Science Framework (OSF) and AEA Registry
+editor_options:
+  chunk_output_type: console
 ---
 
 
@@ -43,12 +47,18 @@ The ID number at the beginning of your sheet!
 
 # Registration & PAP: What
 
-## What is a Registration and a PAP?  
+## What is a Registration and a PAP? (Clark 2017)  
 
 ### Registration: 
+Title, country, status, keyword,
+abstract, start and end dates, outcomes, intervention,
+basic research design, whether treatment clustered, IRB
+information.  
 
 ### PAP: 
-
+Detailed description of research design and
+data analysis plans, submitted to a registry BEFORE
+looking at the data.
 # Registration & PAP: Why
 
 ## Why Register? Publication Bias [10 min version]
@@ -61,13 +71,22 @@ The ID number at the beginning of your sheet!
 ### The file drawer problem is large. (Turner et al 2008, Franco et al. 2014)
 
 ## Publication Bias in FDA Aproved Drugs
-![](TurnerFigure1.png)
+
+ \centerline{\includegraphics[height=3in]{TurnerFigure1.png}}
+
 
 ## Publication Bias Across Social Science
-![](Tess.png)
+ \centerline{\includegraphics[height=3in]{Tess.png}}
 
-## Why Do We Need PAPs?
+## Why Do We Need PAPs? Casey et al. 2012
 ![](GoBifo1.PNG)
+
+## Why Do We Need PAPs? Athey 2018
+![](athey.PNG)
+
+## Why Do We Need PAPs? BuzzFeed 2018!
+![](phacking.PNG)
+
 
 ## Why Do We Need PAPs? The Social Planner View (Haushofer, 2017)
 
@@ -88,6 +107,27 @@ The ID number at the beginning of your sheet!
 2. Exploratory work: datamine to your heart’s delight! Just be honest about it.  
 3. Pre-specifying the wrong analyses: Be honest about your thought process and hope for sensible readers/referees.  
 
+# Registration & PAP: How
+
+
+## Difference between Registration and PAP?
+
+  - Key difference is the amount of detail/effort. 
+  - Registration: very easy, goal is to address publication bias. 
+  - PAP: much more detail required. Similar to grant application/work plan.
+ - It is more a matter of degree. 
+![](degree.png)
+
+
+## Similarities between Registration and PAP?
+
+ - Time stamped document, public (or to be published in a specified date), that describes a prospective study. 
+ - Both go in same registries:
+    - Medicine: clinicaltrial.gov
+    - Social Science (RCTs): socialscienceregistry.org
+    - Social Science (Observational in dev. countries): [RIDIE (3ie)](http://www.3ieimpact.org/en/evaluation/ridie/)
+    - All diciplines and methods: osf.io
+
 
 ## Hands-on Registration.
 Based on a project of your own, or on our little experiment:  
@@ -105,13 +145,13 @@ Using Aspredicted format:
 \pause  
  - **Dependent variable:** Amount offered in the ultimatum game.   
 \pause  
- - **Manipulation/Conditions:**  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question.   
+ - **Treatment:**  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question.   
 \pause    
  - **Analyses:** OLS regression of amount offer as dependant variable and treatment as regressor.     
 \pause    
  - **Outliers and Exclusions:** Will exclude participants with missing information in any field. Amounts beyond plausible values (eg offers above max dollar value) will be will be top-coded.   
 \pause  
- - **Sample size: ** We will define our sample by the number of participants in the workshop.   
+ - **Sample size:** We will define our sample by the number of participants in the workshop.   
 
 ## How to do a PAP? Glennerster & Takavarasha Suggestions  
 
@@ -141,30 +181,38 @@ Report:
  - If you are going to be testing a model, include the model  
  - Remember to archive it  
 
-## How to do a PAP? Specific Resources 
- - Pre-reg Challenge (emph IRB)  
- - RR at JDE
+## OSF registration format for Pre-reg Challenge  
+ ![](reg2.png){ width=50% }    
+   
+ ![](reg1.png)  
+ 
+ 
+## Register Reports at the JDE.  
 
+ ![](RR.png)  
+[Guidelines](https://www.elsevier.com/__data/promis_misc/JDE_RR_Author_Guidelines.pdf) and [Checklist](https://docs.google.com/spreadsheets/d/1zhG3AxOJIB7H1m4-S0jwMN1cQKNVsLomsxktEDVrbP8/edit#gid=1835444640)
 
-## Difference between Registration and PAP?
+<!--
+## Summary ????
+-->
 
- - Key difference is the amount of detail/effort. 
-  - Registration: very easy, goal is to address publication bias. 
-  - PAP: 
- - It is more a matter of degree. 
-![](degree.png)
+![](cost_and_ben.png)
 
+## Final Considerations for Registrations & PAPs
 
-## When should you do a PAP or a Registration?
+### Time dimention. 
+ - Both PAPs and Registrations should be submitted to a public registry *before* looking at the *entire dataset*.
 
-Time dimention. 
-
-Research design dimension. 
-
-
+ - A broadly defined registration should not change much so the earlier the better. 
+ 
+ - A precise PAP need as much information as possible. Ok to look at data, as long as can prove lack of access either treatment or outcome variable.   
+ 
+### Deviations. 
+ - It is comletely fine to deviate from the original PAP. Just label it properly. 
+ - Really good example of how to handle deviations: Green's SOPs ([Article](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf), [SOP](http://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.html))
 
  
-# Reporting Guidelines [20mins]
+# Reporting Guidelines [10mins]
 
 ## Why Do We Need Reporting Guidelines?  
 Defines minimal set of elements required in a scientific paper. 
@@ -186,16 +234,3 @@ Helps with:
 ## CONSORT Guidelines & EQUATOR network.
 ![](Consort2.png)  
 EQUATOR Network: website containing more than 300 other guidelines.
-
-
-## How 
-
-### Registries: OSF/AEA/Others
-
-### Follow guidelines
-
-## Registries
-
-Description
-
-## Guidelines

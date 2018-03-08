@@ -3,6 +3,8 @@ title: "PAP"
 author: "Fernando Hoces de la Guardia"
 date: "2/16/2018"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}

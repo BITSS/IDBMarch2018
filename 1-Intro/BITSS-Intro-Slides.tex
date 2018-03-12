@@ -437,8 +437,15 @@ AKA Registered Reports, moves peer review before data gathering, results, and an
 }
 
 
-\begin{frame}{Meta-Analysis}
-Synthesize results systematically
+\begin{frame}{Power \& Meta-Analysis}
+\begin{itemize}
+\item Many studies are underpowered. \href{http://onlinelibrary.wiley.com/doi/10.1111/ecoj.12461/full}{(Ioannidis, Stanley, Doucouliagos 2017)} Low power leads to false negatives \textit{and} false positives. \href{http://journals.plos.org.libproxy.berkeley.edu/plosmedicine/article?id=10.1371/journal.pmed.0020124}{(Ioannidis 2005)}
+
+\item Adjust for multiple hypothesis testing.
+
+\item Combine and synthesize results systematically with meta-analysis
+
+\end{itemize}
 
 \vspace{.2in}
 Organizations:
@@ -450,6 +457,17 @@ Organizations:
 \item \href{https://www.hendrix.edu/maer-network/}{MAER-NET} (Economics)
 \end{itemize}
 \end{frame}
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[width=\paperwidth]{../Images/Stanley2017.png}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
 
 \begin{frame}{Meta-Analysis}
 Tools:
@@ -673,7 +691,12 @@ Wide range of when exactly to write and how detailed to make the plan. At the ex
 \section{Replication}
 \begin{frame}{Replication}
 \begin{enumerate}[<.->]
- \item The Problem	\href{http://www.jstor.org/stable/1806061}{(JMCB Project)}
+ \item Lack of replicability in code:
+ \begin{itemize}
+ \item	\href{http://www.jstor.org/stable/1806061}{1986: JMCB Project} 
+ \item  \href{https://www.nature.com/articles/d41586-018-02108-9}{2018: Gertler, Galiani, Romero}
+ \end{itemize}
+ \item Also a lack of replicability in experiments: Camerer et al 2016, Many Labs, Reproduciblity Project: Psychology 
  \item Project Protocol, Reporting Standards
  \item Organizing Workflow
  \item Code \& Data Sharing
@@ -726,14 +749,15 @@ Wide range of when exactly to write and how detailed to make the plan. At the ex
 \begin{frame}[plain]
          \begin{tikzpicture}[remember picture,overlay]
             \node[at=(current page.center)] {
-                \includegraphics[width=\paperwidth]{../Images/ManyLabs.PNG}
+            \href{https://osf.io/wx7ck/}{
+                \includegraphics[width=\paperwidth]{../Images/ManyLabs.PNG}}
             };
         \end{tikzpicture}
      \end{frame}
    \begin{frame}[plain]
          \begin{tikzpicture}[remember picture,overlay]
-            \node[at=(current page.center)] {
-                \includegraphics[height=\paperheight]{../Images/rpp.jpg}
+            \node[at=(current page.center)] { \href{http://science.sciencemag.org/content/349/6251/aac4716.full?ijkey=1xgFoCnpLswpk&keytype=ref&siteid=sci}{
+                \includegraphics[height=\paperheight]{../Images/rpp.jpg}}
             };
         \end{tikzpicture}
      \end{frame}

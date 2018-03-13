@@ -118,7 +118,7 @@ Slides available online at \url{http://www.github.com/BITSS/IDBMarch2018}}
   % You might wish to add the option [pausesections]
 \end{frame}
 
-\section {Introduction}
+\section {Principles}
 { % all template changes are local to this group.
     \setbeamertemplate{navigation symbols}{}
     \begin{frame}[plain]
@@ -152,9 +152,10 @@ Begin with a logical file structure
 \end{frame}
 
 
+\section{General Coding Suggestions}
 \begin{frame}{General Coding Suggestions}
 
-\begin {itemize} 
+\begin{itemize} 
 \item Make sure script files are self-contained: don't write code that only works if you run a group of other files previously in a specific order and then leave things hanging precariously. 
 
 \item Include tests in your code.   
@@ -192,6 +193,7 @@ This can alert you if output changes.
 \end{frame}
 
 
+\section{Stata Suggestions}
 \begin{frame}{Stata Suggestions}
 \begin{itemize}
 \item Accurately and concisely capture missing values. (`.` and `.a-.z`)
@@ -215,7 +217,7 @@ This can alert you if output changes.
 \end{frame}
 
 
-\begin{frame}{State Suggestions}
+\begin{frame}{Stata Suggestions}
 \begin{itemize}
 \item Use computer-stored versions of numerical output (eg `r(mean)`). Use `return list` and `ereturn list`
 \item	If you have a master .do file that calls other .do files, which each have their own .log file capturing output, you can run multiple log files at the same time (so you end up with a master .log file)

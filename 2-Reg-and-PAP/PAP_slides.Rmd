@@ -93,7 +93,7 @@ looking at the data.
 **Benefits:**  
 1. Improves transparency: clear ex ante what the researcher planned  
 2. Reduces false positives: fewer forking paths, less p-hacking  
-3. Reduces the filedrawer problem; others can ask what happened to your project. 
+3. Reduces the file drawer problem; others can ask what happened to your project. 
 
 \pause
 
@@ -104,7 +104,7 @@ looking at the data.
 
 **Reducing costs:**    
 1. Time cost: make the PAP your methods section later.  
-2. Exploratory work: datamine to your heart’s delight! Just be honest about it.  
+2. Exploratory work: data mine to your heart’s delight! Just be honest about it.  
 3. Pre-specifying the wrong analyses: Be honest about your thought process and hope for sensible readers/referees.  
 
 # Registration & PAP: How
@@ -126,7 +126,7 @@ looking at the data.
     - Medicine: clinicaltrial.gov
     - Social Science (RCTs): socialscienceregistry.org
     - Social Science (Observational in dev. countries): [RIDIE (3ie)](http://www.3ieimpact.org/en/evaluation/ridie/)
-    - All diciplines and methods: osf.io
+    - All disciplines and methods: osf.io
 
 
 ## Hands-on Registration.
@@ -208,7 +208,7 @@ Report:
  - A precise PAP need as much information as possible. Ok to look at data, as long as can prove lack of access either treatment or outcome variable.   
  
 ### Deviations. 
- - It is comletely fine to deviate from the original PAP. Just label it properly. 
+ - It is completely fine to deviate from the original PAP. Just label it properly. 
  - Really good example of how to handle deviations: Green's SOPs ([Article](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf), [SOP](http://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.html))
 
  

@@ -12,8 +12,7 @@
 \usepackage{tikz}
 \usepackage{graphicx}
 \usepackage[english]{babel}
-
-
+\usepackage{epstopdf}
 \usepackage[utf8]{inputenc}
 % or whatever
 
@@ -236,8 +235,11 @@ More false positives! More precisely, the likelihood that a reported effect repr
 \hyperlink{derive}{\beamerbutton{Derivation}}
 \end{frame}
 
-\begin{frame}{How Common in Economics?}
-Quite
+\begin{frame}{How Bad in Economics?}
+\begin{quote} ``It's \textbf{bad}! It's REALLY \textbf{bad}.'' \\ \end{quote}
+--Tom Stanley [Emphasis original]
+
+\href{http://www.meta-analysis.cz/conference/Stanley_p.pdf}{\beamergotobutton{Source}}
 \end{frame}
 
 { % all template changes are local to this group.
@@ -252,8 +254,123 @@ Quite
 }
 
 \begin{frame}{Ioannidis, Stanley, Doucouliagos 2017}
-\begin{quote}If we adopt the conventional 5\% level of statistical significance and 80\% powerlevel, as well, then the `true effect' will need to be 2.8 standard errors from zero todiscriminate it from zero. The value of 2.8 is the sum of the usual 1.96 for asignificance level of 5\% and 0.84 that is the standard normal value that makes a 20/80\% split in its cumulative distribution. Hence, for a study to have adequate power, itsstandard error needs to be smaller than the absolute value of the underlying effectdivided by 2.8. We make use of this relationship to survey adequate power ineconomics.
+\begin{quote}If we adopt the conventional 5\% level of statistical significance and 80\% power
+level, as well, then the `true effect' will need to be 2.8 standard errors from zero to
+discriminate it from zero. The value of 2.8 is the sum of the usual 1.96 for a
+significance level of 5\% and 0.84 that is the standard normal value that makes a 20/80\% split in its cumulative distribution. Hence, for a study to have adequate power, its
+standard error needs to be smaller than the absolute value of the underlying effect
+divided by 2.8. We make use of this relationship to survey adequate power in
+economics.
 \end{quote}
+\end{frame}
+
+\begin{frame}{Ioannidis, Stanley, Doucouliagos 2017}
+But you still have to find the `true effect.' 
+
+How? Meta-Analysis.
+\begin{itemize}
+\item simple weighted average of all estimates (`fixed effect')
+\item same for top 10\% (smallest s.e.) estimates
+\item single smallest s.e. estimate \href{https://www.sciencedirect.com/science/article/pii/S0022249613000278}{(Ioannidis 2013)}
+\item meta-regression estimate (regress estimate on s.e., \href{http://onlinelibrary.wiley.com/doi/10.1111/j.1468-0084.2007.00487.x/full}{Stanley 2008)}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Speaking of False Positives}
+It's not just journals and researchers collectively creating publication bias, you can create the same problem all by yourself by testing multiple hypotheses and not adjusting for this. Especially if you only report the significant tests, but also if you report everything.
+\vskip0.25in
+P(false positive)$=\alpha$
+
+P(no false positives)$=1-\alpha$
+
+P(no false positives in m tests)$=(1-\alpha)^m$
+
+P(at least one false positive in m tests)$=1-(1-\alpha)^m$
+\end{frame}
+
+
+{ % all template changes are local to this group.
+    \setbeamertemplate{navigation symbols}{}
+    \begin{frame}[plain]
+        \begin{tikzpicture}[remember picture,overlay]
+            \node[at=(current page.center)] {
+                \includegraphics[height=\paperheight]{falsepositive.eps}
+            };
+        \end{tikzpicture}
+     \end{frame}
+}
+\begin{frame}{Reduce Tests: Summary Index Tests}
+Reduce number of tests conducted by grouping outcomes into indexes.
+\begin{itemize}
+\item Started with \href{http://www.jstor.org/stable/2531158}{O'Brien (1984)}
+\item Economists know from \href{https://scholar.harvard.edu/lkatz/publications/experimental-analysis-neighborhood-effects}{MTO: Kling, Liebman, Katz (2007).}
+\end{itemize}
+How:
+\begin{itemize}
+\item Group outcomes into families
+\item Align direction
+\item Normalize and sum
+\item Could also weight for more efficiency (unlikely to matter in practice)
+\item Interpret as standard deviation unit
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Control the Type I Error Rate}
+Primary methods:
+\begin{itemize}
+\item Family-wise error rate (FWER): the probability of at least one Type I error
+\item False discovery rate (FDR): the expected proportion of Type I errors among rejected hypotheses
+\end{itemize}
+\end{frame}
+
+\begin{frame}{FWER Methods}
+Bonferroni: divide your cutoff by the number of tests (or multiply p-value by number of tests, same thing)
+\begin{itemize}
+\item Not suggesting you do this
+\item In fact, I am suggesting you \textit{not} do this 
+\href{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1112991/}{(Pernerger 1998)}
+\item It's just easy to understand
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Better FWER Methods}
+\end{frame}
+
+\begin{frame}{Software}
+\textbf{Stata}
+\begin{itemize}
+\item Michael Anderson
+\begin{itemize}
+\item Wonderfully written JASA paper \href{https://are.berkeley.edu/~mlanderson/pdf/Anderson\%202008a.pdf}{\beamergotobutton{Link}}
+\item Stata for Benjamini \& Hochberg 1995 \href{http://are.berkeley.edu/~mlanderson/downloads/fdr_qvalues.do.zip}{\beamergotobutton{Link}}
+\item Stata for Benjamini, Krieger, \& Yekuteli 2006 \href{http://are.berkeley.edu/~mlanderson/downloads/fdr\_sharpened\_qvalues.do.zip}{\beamergotobutton{Link}}
+\end{itemize}
+\item Roger Newson
+\begin{itemize}
+\item \texttt{ssc install qqplot} \href{http://www.stata-journal.com/sjpdf.html?articlenum=st0209}{\beamergotobutton{Stata Journal}}
+\item \texttt{ssc install smileplot} \href{http://www.stata-journal.com/sjpdf.html?articlenum=st0035}{\beamergotobutton{Old Stata Journal}}
+\end{itemize}
+\end{itemize}
+\textbf{R}
+\begin{itemize}
+\item p.adjust \href{https://www.rdocumentation.org/packages/stats/versions/3.4.3/topics/p.adjust}{\beamergotobutton{Link}}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Active Area of Research}
+List, Shaikh, Xu
+\begin{itemize}
+\item Useful in experimental economics:
+\begin{itemize}
+\item jointly identifying treatment effects for a set of outcomes
+\item estimating heterogeneous treatment effects through subgroup analysis
+\item conducting hypothesis testing for multiple treatment conditions
+\end{itemize}
+\item Builds on \href{https://projecteuclid.org/download/pdfview_1/euclid.aos/1262271625}{Romano, Wolf (2010)}
+\item \href{http://www.nber.org/papers/w21875}{NBER WP}
+\item \href{https://github.com/seidelj/mht}{Github (Stata, Matlab)}
+\item \texttt{ssc install mhtexp}
+\end{itemize}
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -266,6 +383,9 @@ Questions?
 \Huge{Thank you!}
 \end{center}
 \end{frame}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}[label=derive]{Derivation of PPV I}
 \[PPV = Pr(True|T > t_{\alpha})\]

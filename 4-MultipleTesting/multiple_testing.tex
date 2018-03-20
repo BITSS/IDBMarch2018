@@ -205,7 +205,7 @@ You get the most power with equal proportions of treated/control. If treatment i
 \vskip0.25in
 Panel with serial correlation? \href{https://static1.squarespace.com/static/558eff8ce4b023b6b855320a/t/59e932358dd041e0d712fff8/1508454965886/BPW\_Power\_Calculations\_2017\_10\_19.pdf}{(Burlig, Preonas, Woerman 2017)}
 \vskip0.25in
-Complicated? Just simulate it. \href{https://doi.org/10.1186/1471-2288-11-94}{(Arnold et al. 2011)}
+Complicated? Simulate it. \href{https://doi.org/10.1186/1471-2288-11-94}{(Arnold et al. 2011)}
 \end{frame}
 
 \section{Problems in Econ}
@@ -276,6 +276,7 @@ How? Meta-Analysis.
 \end{itemize}
 \end{frame}
 
+\section{Multiple Testing}
 \begin{frame}{Speaking of False Positives}
 It's not just journals and researchers collectively creating publication bias, you can create the same problem all by yourself by testing multiple hypotheses and not adjusting for this. Especially if you only report the significant tests, but also if you report everything.
 \vskip0.25in
@@ -299,6 +300,7 @@ P(at least one false positive in m tests)$=1-(1-\alpha)^m$
         \end{tikzpicture}
      \end{frame}
 }
+\subsection{Index Tests}
 \begin{frame}{Reduce Tests: Summary Index Tests}
 Reduce number of tests conducted by grouping outcomes into indexes.
 \begin{itemize}
@@ -323,6 +325,7 @@ Primary methods:
 \end{itemize}
 \end{frame}
 
+\subsection{FWER Methods}
 \begin{frame}{FWER Methods}
 Bonferroni: divide your cutoff by the number of tests (or multiply p-value by number of tests, same thing)
 \begin{itemize}
@@ -355,7 +358,7 @@ Bonferroni: divide your cutoff by the number of tests (or multiply p-value by nu
 
 \end{frame}
 
-
+\subsection{FDR Methods}
 \begin{frame}{FDR Methods}
 Maybe one false positive isn't the end of the world, and you want more power. Control the expected proportion of false positives instead (FDR).
 \vskip0.1in
@@ -366,14 +369,24 @@ FWER is $P(V>0)$, FDR is $E[Q=V/t]$
 
 \begin{frame}{Benjamin Hochberg 1995}
 \begin{enumerate}
-\item Sort \textit{p}-values
+\item Sort \textit{p}-values $1 \ldots M$
 \item $q \in (0,1)$
 \item Let $c$ be be largest $r$ for which $p_r<qr/M$
+\item Reject all hypotheses $1 \ldots c$ to control FDR at $q$
+\item That is, starting with $p_M$, check if $p_r<qr/M$. If true, reject it and all smaller $p$
 
 \end{enumerate}
 \end{frame}
 
 \begin{frame}{Benjamini, Krieger, Yekutieli 2006}
+Sharpen the procedure by estimating number of true null hypotheses
+\begin{enumerate}
+\item Apply BH  procedure at level $q'=q/(1+q)$. Let c be number of hypotheses rejected. Continue if $c\neq0$
+\item Let $\hat{m}_0=M-c$
+\item Apply BH at $q^*=q'M/\hat{m}_0$
+\end{enumerate}
+\vskip0.1in
+Note: Procedures describe test for a given $q$, so test every value from $1, .999, .998 \ldots$ and find $q$ when hypothesis stops being rejected.
 \end{frame}
 
 
@@ -412,6 +425,20 @@ List, Shaikh, Xu
 \item \href{https://github.com/seidelj/mht}{Github (Stata, Matlab)}
 \item \texttt{ssc install mhtexp}
 \end{itemize}
+\end{frame}
+
+\section{Conclusion}
+\begin{frame}{Conclusion}
+\begin{enumerate}
+\item Design studies with adequate power
+\item Adjust for multiple tests
+\begin{itemize}
+\item Summary Indexes
+\item FWER
+\item FDR
+\end{itemize}
+\end{enumerate}
+
 \end{frame}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

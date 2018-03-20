@@ -342,12 +342,40 @@ Bonferroni: divide your cutoff by the number of tests (or multiply p-value by nu
 \item Enforce original monotonicity $p^{**}_r=\min \{p^*_r \ldots p^*_M\}$ where $r$ is original rank
 \item $L \geq 10,000$ repetitions, $S_r$ is number of times $p^{**}_r  < p_r$
 \item $p_r^{fwer*}=S_r/L$
-\item monotonicity one more time: $p_r^{fwer}=\max \{p_1^{fwer*} \ldots p_r^{fwer*} \}$
-
+\item original monotonicity one more time: $p_r^{fwer}=\max \{p_1^{fwer*} \ldots p_r^{fwer*} \}$
 \end{enumerate}
+\end{frame}
 
+\begin{frame}[label=FWERmain]{Free Stepdown}
+\begin{itemize}
+\item Dependence between outcomes preserved by resampling
+\item Larger unadjusted \textit{p}'s correspond to larger adjusted \textit{p}'s
+\end{itemize}
+\hyperlink{FWERex}{\beamergotobutton{Example}}
 
 \end{frame}
+
+
+\begin{frame}{FDR Methods}
+Maybe one false positive isn't the end of the world, and you want more power. Control the expected proportion of false positives instead (FDR).
+\vskip0.1in
+Let $V=$ false rejections, $U=$ correct rejections, $t=$ total rejections.
+\vskip0.1in
+FWER is $P(V>0)$, FDR is $E[Q=V/t]$
+\end{frame}
+
+\begin{frame}{Benjamin Hochberg 1995}
+\begin{enumerate}
+\item Sort \textit{p}-values
+\item $q \in (0,1)$
+\item Let $c$ be be largest $r$ for which $p_r<qr/M$
+
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Benjamini, Krieger, Yekutieli 2006}
+\end{frame}
+
 
 \begin{frame}{Software}
 \textbf{Stata}
@@ -448,6 +476,37 @@ above.
 \hyperlink{Ioannidis}{\beamergotobutton{Back}}
 \end{frame}
 
+\begin{frame}[label=FWERex]{Free Stepdown Example}
+Michael Anderson JASA 2008! \href{https://are.berkeley.edu/~mlanderson/pdf/Anderson\%202008a.pdf}{\beamergotobutton{Link}}
+\vskip0.2in
+``An example may aid interpretation of FWER-adjusted \textit{p}-values.
+In this research, M = 9 summary indexes were tested for
+each gender. Consider the smallest summary index \textit{p}-value of
+the nine male summary indexes, which occurs for adult Early
+Training males (Table 3). The unadjusted \textit{p}-value is approximately
+.011. The corresponding adjusted \textit{p}-value, calculated
+by the free step-down resampling method for the entire family
+of male summary tests, is $p^{fwer} = .090$. Suppose that we simulate
+the male data 100,000 times under the null hypothesis of no
+treatment effect. 
+\end{frame}
+
+\begin{frame}{Free Stepdown Example II}
+If we compute an entire set of nine summary
+effect \textit{p}-values for each simulation, then the minimum \textit{p}-value
+of that set will be less than or equal to the unadjusted \textit{p}-value of
+.011 approximately 9\% of the time. Thus a minimum observed
+\textit{p}-value of .011 is not unlikely under the null given the number
+of tests conducted?a fact that helps explain why this particular
+effect goes in the ``wrong'' (negative) direction. For unadjusted \textit{p}-values above the family's minimum \textit{p}-value, the number of
+tests in the family effectively decreases, making the adjustment
+less severe.''
+
+\hyperlink{FWERmain}{\beamergotobutton{Back}}
+\end{frame}
+
+
 
 \end{document}
+
 

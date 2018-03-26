@@ -1,6 +1,6 @@
 ---
-title: "Reproducible Workflow: Coding Strategies and Software [75mins]"
-subtitle: "Introduction, Hands-on with Version Control (Github) and Dynamic Documents (RMarkdown)"  
+title: "Reproducible Workflow: Software [35mins]"
+subtitle: "Quick Overviews of Version Control (Github) and Dynamic Documents (RMarkdown)"  
 author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
 output: 
@@ -11,23 +11,78 @@ editor_options:
 ---
 
 
-# Version Control +  DD [30/35 mins]
+# Version Control
 
-## Version Control Problem to avoid [15]
+## Version Control Problem to avoid
 ![http://www.phdcomics.com/comics/archive/phd101212s.gif](http://www.phdcomics.com/comics/archive/phd101212s.gif)
 
 ## Managing expectations
 ![Git xkcd comic](https://imgs.xkcd.com/comics/git.png)
 
+## The Primary Goal of Version Control (for us)
 
-# Dynamic Documents [20 mins]
+**The Goal:** keep track of any potentially meaningfull modification to your code.  (Git is also great for collaboration and exploring the work of others). 
+
+##Strategy 1:  
+1 - Agree on a naming convention with you co-authors (eg: YYYYMMDDfilename_INITALS).  
+2 - Begin working from the last saved version (eg: `20180325demo_FH.do`).  
+3 - At the end of the day, save on a new version (eg: `20180327demo_FH.do`).  
+
+**Pros:** Easy adoption.   
+
+**Cons:** Error prone, hard to document, lots of files for each document.   
+
+##Strategy 2:  
+1 - Name your file `filename` (ideally `01_filename`)  
+2 - Take a snapshot of your work (`Commit`) every time you complete relevant change (day, hour or minutes).  
+3 - Update your entire working folder to the cloud (`push').   
 
 
+**Pros:** Error proof, seemless documentation, one file per document, track differences over all versions, meant to work with the cloud. 
+
+**Cons:** Harder adoption.   
+
+## Tips to ease the adoption: concepts. 
+- **Git** is the software that does all the magic. **Github** is an implementation of Git that is easier to use, provides free (public) cloud service, and tools for collaboration. 
+- A repository (**repo**) is a master folder that contains all your work. 
+- Whenever you take a snapshot of your *saved* work, you **commit**
+- When you make changes to your files in your computer, you are working **locally**, whenever you make changes to the files in the cloud you are working **remotelly**. 
+- Whenever you want to update your *remote* *repo*, you **push**. If you want to update you *local* *repo*, you **pull**.
+- When you copy a repo from another person into your online github account, you **fork** it. 
+- When you start a repo from github.com (just created or forked), and want to download it for the first time to your local computer, you **clone** it. 
+
+## Tips to ease the adoption: 4 min tutorial. 
+1-  Create [github.com](github.com) account and sign in. [1 min]   
+2-  Search `BITSS IDB`
+3-  Fork it.[1min]   
+4-  (You have left the BITSS account, and are now in your account)  
+5- Click on `README.md`, then click on the pencil icon [1min]
+![](edit.png)  
+
+
+## Tips to ease the adoption: 4 min tutorial. 
+6-  Modify the title (`# IDB Reproducibility Training`) and click `Commit changes`    
+7-  Go back to the root folder of the repo (`IDBMarch2018`), and click `Clone or download`. And download as a zip. 
+
+If  you had [Github Desktop](https://desktop.github.com/) (an app from the Github company) installed, you could clone the repo and play more.   
+
+But I just wanted to give you a quick intro to: 
+ - Find code of interest, fork it, edit it, make your first commit, and download. 
+
+## Want to learn more: 
+- [Great 20 min intro to Git by Alice Bartlett](https://www.youtube.com/watch?v=eWxxfttcMts)  
+
+- [Great 2hr tutorial to Github by Jenny Bryan (git ninja)](https://www.rstudio.com/resources/videos/happy-git-and-gihub-for-the-user-tutorial/)  
+
+- [Documentation from Matthew Gentzkow Jesse Shapiro](http://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)  
+
+
+# Dynamic Documents
 
 ## Dynamic Documents For Computational Reproducibility
 - Based on principles of *literate programming* aims at combining code and paper in one single document 
 - Best framework to achieve the holy grail of **one-click reproducible workflow**
-- Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is catching up (more at the end)
+- Best two current implementations: `RMarkdown (R)` & `Jupyter (Python)`. `Stata` is catching up (dyndocs release [here](https://www.stata.com/new-in-stata/markdown/) and reviews [here](http://data.princeton.edu/stata/markdown/markstat.htm) and [here](https://www.bitss.org/2017/09/05/review-of-statas-dyndoc/))
 
 ## Currently code and narrative components live in separate universes 
 ![](./Two universes.png)   
@@ -115,7 +170,9 @@ To write inline use only one Backtick to open followed by an "r"" and one to clo
 1+1` `` in the output.
 --> 
 
-## Hands-on!
+
+<!--
+## Super short demo
 ```{r folder setup, echo=FALSE, eval=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 cwd <- getwd() 
 setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
@@ -159,6 +216,12 @@ unlink("googlesheets_token.rds", recursive = TRUE)
 
 ```
 
+## If I have time, show analysis of experiments. 
+- OLS: output 1, ouput 2, combination.  
+- No controls, permutation of controls.   
+- Different data cleaning.   
+
+## If no time, then go with Birthday problem example: 
 
 
 ```{r consort diagram, echo=FALSE, eval=FALSE}
@@ -333,19 +396,88 @@ render_graph(g)
 
 ```
 
-## Balance of covariates 
-
-## Estimated effect
-
-## The Stata version of all of the above: 
+-->
 
 
-## Additional Resources
-### Garret, Ted and Jeremy's book
-### The Practice of Reproducible Research   
-### Code and Data for the Social Sciences  
-### The Workflow of Data Analysis Using Stata  
-### Reproducible Research with R and R Studio  
-### Project TIER
-### Great intro to GitHub by Jenny Bryan
+## Hands-on excercise: the birthday problem!
+```{r global pars, eval=TRUE, echo=FALSE, results='hide'}
+n.pers = 40
+set.seed(1234)
+```  
+As an illustration lets write a report using the participants in this workshop to illustrate the famous [birthday problem](https://en.wikipedia.org/wiki/Birthday_problem). 
+
+>What is the probability that at least two people this room share the same birthday?
+
+>Is it something like $\frac{1}{365} \times N =$   `r round(1/365 * n.pers, 3)`?
+
+## Create a new RMarkdown File
+
+1 - In RStudio: `File-> New File -> RMarkdown...`  
+2 - Name it, and save it.   
+3 - Review/edit the header, and delete all the default body of text except for one code chunk.   
+4 - Define a seed (`set.seed(1234)` and number of people in the room (`n.pers = ?`)
+
+## The birthday problem: the math
+Actually the math says otherwise: 
+\begin{align} 
+ 1 - \bar p(n) &= 1 \times \left(1-\frac{1}{365}\right) \times \left(1-\frac{2}{365}\right) \times \cdots \times \left(1-\frac{n-1}{365}\right) \nonumber  \\  &= \frac{ 365 \times 364 \times \cdots \times (365-n+1) }{ 365^n } \nonumber \\ &= \frac{ 365! }{ 365^n (365-n)!} = \frac{n!\cdot\binom{365}{n}}{365^n}\\
+p(n= `r n.pers`) &= `r  round(1 - factorial(n.pers) * choose(365,n.pers)/ 365^n.pers, 3)`  \nonumber
+\end{align}
+
+## Code for the math (<https://goo.gl/ZFQvba>)
+
+Don't look at this: just copy and paste into your report
+```{r math, eval=FALSE}
+\begin{align} 
+ 1 - \bar p(n) &= 1 \times \left(1-\frac{1}{365}\right) 
+ \times \left(1-\frac{2}{365}\right) \times \cdots \times 
+ \left(1-\frac{n-1}{365}\right) \nonumber  \\  
+ &= \frac{ 365 \times 364 \times \cdots \times 
+   (365-n+1) }{ 365^n } \nonumber \\ 
+ &= \frac{ 365! }{ 365^n (365-n)!} = 
+   \frac{n!\cdot\binom{365}{n}}{365^n}\\
+p(n= `r n.pers`) &= `r  
+ round(1 - factorial(n.pers) * 
+         choose(365,n.pers)/ 365^n.pers, 3)`\nonumber
+\end{align}
+```
+
+## Don't like math? Let's run a simple simulation!   
+ 1 - Simulate 10,000 rooms with $n = `r n.pers`$ random birthdays, and store the results in matrix where each row represents a room.   
+ 2 - For each room (row) compute the number of unique birthdays.   
+ 3 - Compute the average number of times a room has `r n.pers` unique birthdays, across 10,000 simulations, and report the complement.    
+
+
+## Code for the simulation (<https://goo.gl/ZFQvba>)  
+
+```{r birthday prob, eval=TRUE, echo=TRUE}
+birthday.prob = function(n.pers, n.sims) {
+  # simulate birthdays
+  birthdays = matrix(round(runif(n.pers * n.sims, 1, 365)), 
+                      nrow = n.sims, ncol = n.pers)
+  # for each room (row) get unique birthdays
+  unique.birthdays = apply(birthdays, 1, unique)
+  # Indicator with 1 if all are unique birthdays
+  all.different = (lapply(unique.birthdays, length) == n.pers)
+  # Compute average time all have different birthdays 
+  result = 1 - mean(all.different)
+return(result)
+}
+n.pers.param = 43
+n.sims.param = 1e4
+birthday.prob(n.pers.param,n.sims.param)
+```
+
+## Results   
+- Many people originally think of a prob ~ $\frac{1}{365} \times N =$   `r round(1/365 * n.pers.param, 3)`
+- However the true probability is of $p(n= `r n.pers.param`) = `r round(1 - factorial(n.pers.param) * choose(365,n.pers.param)/ 365^n.pers.param, 3)`$
+- And the simulated probability is of  `r birthday.prob(n.pers = n.pers.param, n.sims = n.sims.param)`
+
+## Final Remarks & More Resources
+ - With DD with can achieve a one-click reproducible workflow.
+ - This is particularly helpful to understand/present results that are hard to digest.
+ - Stata just develop an internal version of DD for v15. [Review Here](https://www.bitss.org/2017/09/05/review-of-statas-dyndoc/)
+ - More great examples [here]()
+ - Want to learn more: [great free books](https://bookdown.org/) (can you guess how they were written?)
+
 

@@ -4,46 +4,37 @@ author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://g
 date: "Inter-American Development Bank Workshop, March 2018"
 output:
   beamer_presentation:
-    slide_level: 2
     fig_caption: no
+    slide_level: 2
   slidy_presentation: default
 subtitle: Introduction, Hands-on with the Open Science Framework (OSF) and AEA Registry
 editor_options:
   chunk_output_type: console
 ---
 
-
-
-
-# Little experiment [10mins]
+# Let's Start With a Little Experiment!
 
 ## Explanation to participants
 
-### Read and complete the sheet: DO NOT LOOK AT OTHERS SHEETS
+- \Large{Read and complete the sheet. Do not look at others sheets.}
 
-### Go to the website bellow and complete with your answers.
+\bigskip 
+
+- \Large{Go to the website bellow and complete with your answers.}
 
 \begin{center}
 \LARGE{https://goo.gl/aj8W61}  
 \end{center}
 
-## Explanation to researchers
+##  
 
-### You just participated in (highly simplified) version of **The Ultimatum Game**
+\begin{center}
+{\LARGE Thank you for participating} \\
+We will refer back to this exercise in the hands-on part of the presentation.
+\end{center}
 
-### The goal of the UG is to measure attitudes about fairness and/or expectations about (econ) rational behavior. 
-
-### Our little experiment was trying to measure if the responses to the UG can be anchored by a completly irrelevant number:
-The ID number at the beginning of your sheet!
-
-## Explanation to researchers
-
-### Treatment was receiving an ID number between 960 and 999.
-### Control receive an ID number between 10 and 49.
-
-### Outcome: Offer made in the UG
-
-### For the hands-on excercise, you can use this experiment, or work with your own paper/project. 
+## Outline
+\tableofcontents
 
 # Registration & PAP: What
 
@@ -59,39 +50,28 @@ information.
 Detailed description of research design and
 data analysis plans, submitted to a registry BEFORE
 looking at the data.
+
 # Registration & PAP: Why
 
-## Why Register? Publication Bias [10 min version]
-### Effect sizes diminish with sample size (Gerber, Green, Nickerson 2001).
-
-### There is a higher fraction of rejected hypothesis tests in social compared to hard sciences (Fanelli 2010).
-
-### Published null results are disappearing over time, in all disciplines (Fanelli 2011).
-
-### The file drawer problem is large. (Turner et al 2008, Franco et al. 2014)
-
-## Publication Bias in FDA Aproved Drugs
-
- \centerline{\includegraphics[height=3in]{TurnerFigure1.png}}
-
-
-## Publication Bias Across Social Science
+## Why Do We Need Registration? Publication Bias Across Social Science
  \centerline{\includegraphics[height=3in]{Tess.png}}
 
-## Why Do We Need PAPs? Casey et al. 2012
+## Why Do We Need PAPs? The Threat of P-Hacking
+**Casey et al. 2012**  
 ![](GoBifo1.PNG)
 
-## Why Do We Need PAPs? Athey 2018
+## Why Do We Need PAPs? The Extension of P-Hacking 
+**Athey 2018**  
 ![](athey.PNG)
 
-## Why Do We Need PAPs? BuzzFeed 2018!
+## Why Do We Need PAPs? The Practice of P-Hacking 
+**BuzzFeed 2018!**  
 ![](phacking.PNG)
-
 
 ## Why Do We Need PAPs? The Social Planner View (Haushofer, 2017)
 
 **Benefits:**  
-1. Improves transparency: clear ex ante what the researcher planned  
+1. Improves transparency: clear ex-ante what the researcher planned  
 2. Reduces false positives: fewer forking paths, less p-hacking  
 3. Reduces the file drawer problem; others can ask what happened to your project. 
 
@@ -101,22 +81,26 @@ looking at the data.
 1. Time cost. I don’t think this is very large, see below.  
 2. Stifles exploratory work. I don’t think this is true, see below.  
 3. Pre-specifying the wrong analyses (ex ante or ex post). This is potentially serious.   
+\pause
 
 **Reducing costs:**    
 1. Time cost: make the PAP your methods section later.  
 2. Exploratory work: data mine to your heart’s delight! Just be honest about it.  
 3. Pre-specifying the wrong analyses: Be honest about your thought process and hope for sensible readers/referees.  
 
+
+## Why write one? Individual View (Haushofer, 2017+)
+Benefits  
+1. Signals dedication to honesty and rigor.   
+2. Now you can get in-principle acceptance to a good PAP (JDE).  
+
+Costs  
+1. Journals (until very recently) care mainly about interesting findings than PAPs. On the margin, PAPs not very helpful.  
+2. Rigor and transparency can be demonstrated in other ways (e.g. good robustness checks).  
+3. More difficult with a PAP to make serendipitous discoveries the main story. That’s as it should be.   
+
+
 # Registration & PAP: How
-
-
-## Difference between Registration and PAP?
-
-  - Key difference is the amount of detail/effort. 
-  - Registration: very easy, goal is to address publication bias. 
-  - PAP: much more detail required. Similar to grant application/work plan.
- - It is more a matter of degree. 
-![](degree.png)
 
 
 ## Similarities between Registration and PAP?
@@ -124,10 +108,37 @@ looking at the data.
  - Time stamped document, public (or to be published in a specified date), that describes a prospective study. 
  - Both go in same registries:
     - Medicine: clinicaltrial.gov
-    - Social Science (RCTs): socialscienceregistry.org
+    - Social Science (RCTs): socialscienceregistry.org (AEA)
     - Social Science (Observational in dev. countries): [RIDIE (3ie)](http://www.3ieimpact.org/en/evaluation/ridie/)
     - All disciplines and methods: osf.io
 
+
+## Difference between Registration and PAP?
+
+  - Key difference is the amount of detail/effort. 
+  - Registration: very easy, goal is to track publication bias. 
+  - PAP: much more detail required. Similar to grant application/work plan.
+ - It is more a matter of degree. 
+ - For our hands-on exercise we will be doing a quick registration.
+
+
+
+## Back to our little experiment: Explanation to researchers
+
+- You  participated in (highly simplified) version of **The Ultimatum Game**
+
+- The goal of the UG is to measure attitudes about fairness and/or expectations about (econ) rational behavior. 
+
+- Our little experiment was trying to measure if the responses to the UG can be anchored by a completely irrelevant number: **The ID number at the beginning of your sheet!**
+
+## Explanation to researchers
+
+- Treatment was receiving an ID number between 960 and 999.
+- Control receive an ID number between 10 and 49.
+
+- Outcome: Offer made in the UG
+
+- For the , you can use this experiment, or work with your own paper/project. 
 
 ## Hands-on Registration.
 Based on a project of your own, or on our little experiment:  
@@ -141,17 +152,17 @@ Based on a project of your own, or on our little experiment:
 ## Registration of our Little Experiment 
 Using Aspredicted format:    
 \pause  
- - **Research question:** Does exposure to a large number increases the offer made in the ultimatum game?  
+ - **Research question:** \pause  Does exposure to a large number increases the offer made in the ultimatum game?  
 \pause  
- - **Dependent variable:** Amount offered in the ultimatum game.   
+ - **Dependent variable:** \pause  Amount offered in the ultimatum game.   
 \pause  
- - **Treatment:**  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question.   
+ - **Treatment:**  \pause  Participant will be randomly assigned a large number ([960, 999]) or a small number ([10, 49]) to be read and remember, before reading the ultimatum game question.   
 \pause    
- - **Analyses:** OLS regression of amount offer as dependant variable and treatment as regressor.     
+ - **Analyses:** \pause  OLS regression of amount offer as dependant variable and treatment as regressor.     
 \pause    
- - **Outliers and Exclusions:** Will exclude participants with missing information in any field. Amounts beyond plausible values (eg offers above max dollar value) will be will be top-coded.   
+ - **Outliers and Exclusions:** \pause  Will exclude participants with missing information in any field. Amounts beyond plausible values (eg offers above max dollar value) will be will be top-coded.   
 \pause  
- - **Sample size:** We will define our sample by the number of participants in the workshop.   
+ - **Sample size:** \pause  We will define our sample by the number of participants in the workshop.   
 
 ## How to do a PAP? Glennerster & Takavarasha Suggestions  
 
@@ -212,20 +223,26 @@ Report:
  - Really good example of how to handle deviations: Green's SOPs ([Article](https://www.stat.berkeley.edu/~winston/sop-safety-net.pdf), [SOP](http://alexandercoppock.com/Green-Lab-SOP/Green_Lab_SOP.html))
 
  
-# Reporting Guidelines [10mins]
+# Reporting Guidelines
+
+<!--
+Review Smart project by Gabe Lenz
+-->
 
 ## Why Do We Need Reporting Guidelines?  
 Defines minimal set of elements required in a scientific paper. 
 Helps with:  
  - Structured PAPs  
  - Replicability    
- - Meta-analysis    
+ - Meta-analysis (see [aidgrade.org](http://www.aidgrade.org/get-data))   
  
+Great discussion of standarized reporting by David Evans on the World Bank blog [here](https://blogs.worldbank.org/impactevaluations/if-you-want-your-study-included-systematic-review-what-you-should-report).
+
  
 ## How to follow Reporting Guidelines  
  - CONSORT Guidelines & EQUATOR network.
- - Recent APA guidelines.
- - JDE suggested guidelines for register reports. 
+ - Recent [APA guidelines](http://psycnet.apa.org/fulltext/2018-00750-002.pdf).
+ - JDE [author guidelines](https://www.bitss.org/wp-content/uploads/2018/03/JDE_RR_Author_Guidelines.pdf) for register reports (with a great [checklist here](https://docs.google.com/spreadsheets/d/1zhG3AxOJIB7H1m4-S0jwMN1cQKNVsLomsxktEDVrbP8/edit#gid=1835444640)). 
  
 ## CONSORT Guidelines & EQUATOR network.
 ![](Consort1.png)

@@ -68,6 +68,10 @@ looking at the data.
 **BuzzFeed 2018!**  
 ![](phacking.PNG)
 
+## Why? Null Results Increase After Requiring Registrations
+**Kaplan & Irvin**  
+![](plosone.PNG)
+
 ## Why Do We Need PAPs? The Social Planner View (Haushofer, 2017)
 
 **Benefits:**  
@@ -96,8 +100,7 @@ Benefits
 
 Costs  
 1. Journals (until very recently) care mainly about interesting findings than PAPs. On the margin, PAPs not very helpful.  
-2. Rigor and transparency can be demonstrated in other ways (e.g. good robustness checks).  
-3. More difficult with a PAP to make serendipitous discoveries the main story. That’s as it should be.   
+2. More difficult with a PAP to make serendipitous discoveries the main story. That’s as it should be.   
 
 
 # Registration & PAP: How

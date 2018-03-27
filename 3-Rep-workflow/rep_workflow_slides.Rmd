@@ -6,6 +6,7 @@ date: "Inter-American Development Bank Workshop, March 2018"
 output: 
   beamer_presentation:
     slide_level: 2
+    toc: true
 editor_options: 
   chunk_output_type: console
 ---
@@ -34,11 +35,11 @@ editor_options:
 
 ##Strategy 2:  
 1 - Name your file `filename` (ideally `01_filename`)  
-2 - Take a snapshot of your work (`Commit`) every time you complete relevant change (day, hour or minutes).  
-3 - Update your entire working folder to the cloud (`push').   
+2 - Take a snapshot of your work every time you complete relevant change (day, hour or minutes).  
+3 - Update your entire working folder to the cloud.   
 
 
-**Pros:** Error proof, seemless documentation, one file per document, track differences over all versions, meant to work with the cloud. 
+**Pros:** Error proof, seemless documentation, one file per document, track differences across all versions, meant to work with the cloud. 
 
 **Cons:** Harder adoption.   
 
@@ -66,7 +67,7 @@ editor_options:
 
 If  you had [Github Desktop](https://desktop.github.com/) (an app from the Github company) installed, you could clone the repo and play more.   
 
-But I just wanted to give you a quick intro to: 
+But I just wanted to give you a quick intro to:   
  - Find code of interest, fork it, edit it, make your first commit, and download. 
 
 ## Want to learn more: 
@@ -75,6 +76,8 @@ But I just wanted to give you a quick intro to:
 - [Great 2hr tutorial to Github by Jenny Bryan (git ninja)](https://www.rstudio.com/resources/videos/happy-git-and-gihub-for-the-user-tutorial/)  
 
 - [Documentation from Matthew Gentzkow Jesse Shapiro](http://web.stanford.edu/~gentzkow/research/CodeAndData.pdf)  
+
+- Come to 3-Day trainning (RT2) in Seattle ([Amsterdam next week](https://www.bitss.org/events/research-transparency-and-reproducibility-training-rt2-amsterdam/), [repo from last year](https://github.com/BITSS/RT2Berkeley2017))!
 
 
 # Dynamic Documents
@@ -99,6 +102,27 @@ But I just wanted to give you a quick intro to:
 - 1 machinery to combine analysis and text to create a single output: `Pandoc`
 - [Optional-but-not-really] 1 program to bring all the elements together: RStudio/RMarkdown, Jupyter
 
+## Basic Structure: Code Chunks and Inline
+
+```{r smpl_yml3, eval=FALSE, echo=TRUE}
+---
+header
+---
+```
+
+Body of text. 
+
+
+To begin a piece of code ("code chunk"). Enclose them in the following expression (Ctrl/Cmd + shift/optn + i) 
+
+````
+```{r, eval=TRUE}`r ''`
+here goes the code
+```
+````
+
+To write inline use only one Backtick to open followed by an "r"" and one to close `` `r
+1+1` `` in the output.
 <!--
 ## Markdown laguange/syntax in 60 seconds
 ![](./RStudioCS.png)
@@ -401,7 +425,7 @@ render_graph(g)
 
 ## Hands-on excercise: the birthday problem!
 ```{r global pars, eval=TRUE, echo=FALSE, results='hide'}
-n.pers = 40
+n.pers = 20
 set.seed(1234)
 ```  
 As an illustration lets write a report using the participants in this workshop to illustrate the famous [birthday problem](https://en.wikipedia.org/wiki/Birthday_problem). 
@@ -463,7 +487,7 @@ birthday.prob = function(n.pers, n.sims) {
   result = 1 - mean(all.different)
 return(result)
 }
-n.pers.param = 43
+n.pers.param = 20
 n.sims.param = 1e4
 birthday.prob(n.pers.param,n.sims.param)
 ```
@@ -477,7 +501,14 @@ birthday.prob(n.pers.param,n.sims.param)
  - With DD with can achieve a one-click reproducible workflow.
  - This is particularly helpful to understand/present results that are hard to digest.
  - Stata just develop an internal version of DD for v15. [Review Here](https://www.bitss.org/2017/09/05/review-of-statas-dyndoc/)
- - More great examples [here]()
+ - More great examples [here](https://github.com/BITSS/Annual2017/tree/master/3-Rmarkdown)
  - Want to learn more: [great free books](https://bookdown.org/) (can you guess how they were written?)
+
+## Bonus let's try and excercise in Stata (15) 
+1- Go to github.com and search `dyndoc tier` or click here: [github.com/dvorakt/TIER_exercises](https://github.com/dvorakt/TIER_exercises).   
+2- Download or clone the repo.   
+3- Unzip it.   
+4- Open Stata (15) and type `dyndoc filepath/dyndoc_debt_growth/debt and growth stata dyndoc.do", replace`
+5- Go to the folder and click in `debt and growth stata dyndoc.html` 
 
 

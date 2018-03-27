@@ -3,10 +3,10 @@ title: 'Reproducible Workflow: Software'
 author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
 output:
+  slidy_presentation: default
   beamer_presentation:
     slide_level: 2
     toc: yes
-  slidy_presentation: default
 subtitle: Quick Overviews of Version Control (Github) and Dynamic Documents (RMarkdown)
 editor_options:
   chunk_output_type: console

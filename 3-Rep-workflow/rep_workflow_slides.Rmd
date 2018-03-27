@@ -1,13 +1,14 @@
 ---
-title: "Reproducible Workflow: Software [35mins]"
-subtitle: "Quick Overviews of Version Control (Github) and Dynamic Documents (RMarkdown)"  
+title: 'Reproducible Workflow: Software [35mins]'
 author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
-output: 
+output:
   beamer_presentation:
     slide_level: 2
-    toc: true
-editor_options: 
+    toc: yes
+  slidy_presentation: default
+subtitle: Quick Overviews of Version Control (Github) and Dynamic Documents (RMarkdown)
+editor_options:
   chunk_output_type: console
 ---
 
@@ -195,8 +196,6 @@ To write inline use only one Backtick to open followed by an "r"" and one to clo
 --> 
 
 
-<!--
-## Super short demo
 ```{r folder setup, echo=FALSE, eval=FALSE, warning=FALSE, message=FALSE, eval=FALSE}
 cwd <- getwd() 
 setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
@@ -240,16 +239,16 @@ unlink("googlesheets_token.rds", recursive = TRUE)
 
 ```
 
-## If I have time, show analysis of experiments. 
-- OLS: output 1, ouput 2, combination.  
-- No controls, permutation of controls.   
-- Different data cleaning.   
+## P-hacking with the little experiment
+- OLS 
+- 3 outputs
+- 2 Treatment vars  
+- 7 Possible covariates (6 + none)  
+- Total of 42 plausible models  
 
-## If no time, then go with Birthday problem example: 
-
-
-```{r consort diagram, echo=FALSE, eval=FALSE}
-
+## P-Hacking in Action (Specification Curve)
+```{r consort diagram, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
 #download.file("https://ndownloader.figshare.com/files/10553269",
 #              "raw_data.csv")
 setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
@@ -257,20 +256,23 @@ setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
 df <- read_csv(file = "UG_anchoring/rawdata/raw_data.csv")
 # create treatment var
 df <- df %>% mutate("treatment" = 
-                      ifelse(`ID number` >= 950 & `ID number` <= 1000,1,NA)) %>% 
+                      ifelse(`ID number` >= 960 & `ID number` <= 1000,1,NA)) %>% 
   mutate("treatment" = replace(treatment, `ID number` >= 10 & `ID number` <= 50, 0) )
 # create a treatment var that treats out of range values as indicators of how the number
 # was read, and defines treatment for any value above 500, and control otherwise
 df <- df %>% mutate("treatment_generous" = 
                       ifelse(`ID number` >= 500,1,0))
 
-with(df, table(treatment, treatment_generous, useNA = "ifany"))
+#with(df, table(treatment, treatment_generous, useNA = "ifany"))
 
-
-# Define outcome AQUI VOY
+# 2 x (6+1) x 3 
+# two def of treatment
+# with and without covs
+# Six combinations of controls
+# Define outcome
 # Three sensible ways to define outcome:
 # (1) answer to Q1 in levels, (2) answer to Q2 en levels, 
-# (3) weighted average of Q1 and Q2 as fractions
+# (3) average of Q1 and Q2 as fractions
 
 df <- df %>% mutate("outcome_1" = `Dollar value to question #1`,
                     "outcome_2" = `Dollar value to question #2`) %>%
@@ -296,36 +298,50 @@ df <- df %>% mutate("treatment" =
                       replace(outcome_3, 
                               outcome_3 > 1 & outcome_3 <= 1.2*1, 1)
                     )
-library(lubridate)
+df$Experience = df$`Years of working experience`
+
+#"Years of working experience"
+#library(lubridate)
 # Will exclude any observation that responded before begining the seminar, or after. 
-seminar_begins <- Sys.time()
-mdy_hms(df$Timestamp) - seminar_begins
+#seminar_begins <- Sys.time()
+#mdy_hms(df$Timestamp) - seminar_begins
 # Missing values will be coded as NA
 # Missing in either outcome or treatment var -> excluded variable
 # Missing in covariates will be exlcuded of their corresponging analysis but keep for unconditional analysis. 
-# There will be no additional treatment of outliers
-
-# Balance tables t.test(asd~treatment_generous, data = df, var.equal = T)
-# row 1 intercept (mean for control group)
-# col 1 estimates AQUI VOY
-covariates <- c("name1", "name2")
-balance.table <- data.frame(row.names = covariates, 
-                            "mean_control" = rep(NA,length(covariates)), 
-                            "diff" = rep(NA,length(covariates)), 
-                            "sd" = rep(NA,length(covariates)))
-aux.2 <- summary(lm(asd~treatment_generous, data = df))$coefficients[, 1:2]
-
-# Estimate effect 
-lm(outcome_1 ~ treatment, data=df)
-lm(outcome_1 ~ treatment_generous, data=df)
-
-# Estimate effect with covariates
-
-# Repeat excluding late responders
-
-# Repeat excluding outliers
+library(combinat)
 
 
+match_variables <- c("Education", "Experience", "Gender")
+combos <- sapply( seq(3), function(i) {
+  as.list(as.data.frame(combn( x=match_variables, m=i ) ) )
+})
+forms <- unlist(combos,recursive=FALSE)
+forms <- c("1", sapply( forms, function(x) paste(x,collapse="+")) )
+
+results <- matrix(data = NA, 72, 2)
+k <- 0
+
+for (xvars in forms) {
+  for (j in c("treatment", "treatment_generous")) {
+    for (i in c("outcome_1","outcome_2","outcome_3" )) {
+      model <- lm(paste(i, paste(j, xvars, sep = "+"), sep = "~"), data=df)
+      k <- k + 1
+      results[k,] <- summary(model)$coefficients[2, 1:2]
+    } 
+  }
+}
+
+results <- results[order(results[,1]/results[1:48,2]),]
+ES <- results[1:48,1]/results[1:48,2]
+plot(1:48, ES, ylim = c(-1.5,1.5), xlab = "Models")
+abline(h = 0)
+segments(1:48, ES - 1.96*ES, 1:48, ES + 1.96* ES)
+```
+
+
+
+<!--
+```{r later, eval=FALSE}
 #install.packages("DiagrammeRsvg")
 # this codes comes from:
 # https://scriptsandstatistics.wordpress.com/2017/12/22/how-to-draw-a-consort-flow-diagram-using-r-and-graphviz/
@@ -422,8 +438,7 @@ render_graph(g)
 
 -->
 
-
-## Hands-on excercise: the birthday problem!
+## Back-up Demo: The Birthday Problem!
 ```{r global pars, eval=TRUE, echo=FALSE, results='hide'}
 n.pers = 20
 set.seed(1234)

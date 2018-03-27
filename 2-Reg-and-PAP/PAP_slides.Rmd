@@ -146,11 +146,12 @@ Costs
 ## Hands-on Registration.
 Based on a project of your own, or on our little experiment:  
 
+ - Explore [AEA Registry](www.socialscienceregistry.org) at [www.socialscienceregistry.org](www.socialscienceregistry.org)
+
  - Create a draft of using [Open Science Framework](osf.io) at [osf.io](osf.io):  
      - Open format
      - AsPredicted (will work with this one)
   
- - Explore [AEA Registry](www.socialscienceregistry.org) at [www.socialscienceregistry.org](www.socialscienceregistry.org)
 
 ## Registration of our Little Experiment 
 Using Aspredicted format:    

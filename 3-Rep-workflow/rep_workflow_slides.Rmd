@@ -226,6 +226,7 @@ writeLines("# Little Experiment", "README.md")
 
 aux.1 <- gs_title("Quick survey")
 df <- gs_read(aux.1)
+df <- df[!is.na(df$`ID number`),]
 write_csv(df, path = "rawdata/raw_data.csv")
 
 #upload  
@@ -247,7 +248,7 @@ unlink("googlesheets_token.rds", recursive = TRUE)
 - Total of 42 plausible models  
 
 ## P-Hacking in Action (Specification Curve)
-```{r consort diagram, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
+```{r spec curve, echo=FALSE, eval=TRUE, message=FALSE, warning=FALSE}
 library(tidyverse)
 #download.file("https://ndownloader.figshare.com/files/10553269",
 #              "raw_data.csv")

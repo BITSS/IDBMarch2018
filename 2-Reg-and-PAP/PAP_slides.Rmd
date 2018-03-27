@@ -83,7 +83,7 @@ looking at the data.
 
 **Costs:**    
 1. Time cost. I don’t think this is very large, see below.  
-2. Stifles exploratory work. I don’t think this is true, see below.  
+2. Stifles exploratory work. This is probably not true, see below.  
 3. Pre-specifying the wrong analyses (ex ante or ex post). This is potentially serious.   
 \pause
 

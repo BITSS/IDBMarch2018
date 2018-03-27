@@ -23,7 +23,7 @@ editor_options:
 
 ## The Primary Goal of Version Control (for us)
 
-**The Goal:** keep track of any potentially meaningfull modification to your code.  (Git is also great for collaboration and exploring the work of others). 
+**The Goal:** keep track of any potentially meaningfull modification to your code (Git is also great for collaboration and exploring the work of others). 
 
 ##Strategy 1:  
 1 - Agree on a naming convention with you co-authors (eg: YYYYMMDDfilename_INITALS).  
@@ -256,6 +256,7 @@ setwd("~/Desktop/sandbox/IDBMarch2018/3-Rep-workflow")
 
 df <- read_csv(file = "UG_anchoring/rawdata/raw_data.csv")
 # create treatment var
+
 df <- df %>% mutate("treatment" = 
                       ifelse(`ID number` >= 960 & `ID number` <= 1000,1,NA)) %>% 
   mutate("treatment" = replace(treatment, `ID number` >= 10 & `ID number` <= 50, 0) )
@@ -301,6 +302,24 @@ df <- df %>% mutate("treatment" =
                     )
 df$Experience = df$`Years of working experience`
 
+
+df <- df %>% mutate("treatment" = 
+                      replace(treatment, 
+                              `ID number` >= 0.8*950 & `ID number` <= 1.2*1000, 1), 
+                    "treatment" = 
+                      replace(treatment, 
+                              `ID number` >= 0.8*10 & `ID number` <= 1.2*50, 0) , 
+                    "outcome_1" = 
+                      replace(outcome_1, 
+                              outcome_1 > 1000 & outcome_1 <= 1.2*1000, 1000),
+                    "outcome_2" = 
+                      replace(outcome_2, 
+                              outcome_2 > 10 & outcome_2 <= 600, 10),
+                    "outcome_3" = 
+                      replace(outcome_3, 
+                              outcome_3 > 1 & outcome_3 <= 40, 1)
+                    )
+
 #"Years of working experience"
 #library(lubridate)
 # Will exclude any observation that responded before begining the seminar, or after. 
@@ -319,7 +338,7 @@ combos <- sapply( seq(3), function(i) {
 forms <- unlist(combos,recursive=FALSE)
 forms <- c("1", sapply( forms, function(x) paste(x,collapse="+")) )
 
-results <- matrix(data = NA, 72, 2)
+results <- matrix(data = NA, 48, 2)
 k <- 0
 
 for (xvars in forms) {
@@ -441,7 +460,7 @@ render_graph(g)
 
 ## Back-up Demo: The Birthday Problem!
 ```{r global pars, eval=TRUE, echo=FALSE, results='hide'}
-n.pers = 20
+n.pers = 21
 set.seed(1234)
 ```  
 As an illustration lets write a report using the participants in this workshop to illustrate the famous [birthday problem](https://en.wikipedia.org/wiki/Birthday_problem). 
@@ -503,7 +522,7 @@ birthday.prob = function(n.pers, n.sims) {
   result = 1 - mean(all.different)
 return(result)
 }
-n.pers.param = 20
+n.pers.param = 21
 n.sims.param = 1e4
 birthday.prob(n.pers.param,n.sims.param)
 ```

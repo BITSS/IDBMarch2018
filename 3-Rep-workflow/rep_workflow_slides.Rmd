@@ -1,5 +1,5 @@
 ---
-title: 'Reproducible Workflow: Software [35mins]'
+title: 'Reproducible Workflow: Software'
 author: "| Fernando Hoces de la Guardia\n| BITSS   \n| -\n| Slides at <https://goo.gl/aBQ3LR>\n"
 date: "Inter-American Development Bank Workshop, March 2018"
 output:

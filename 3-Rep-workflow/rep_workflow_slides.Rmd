@@ -355,7 +355,6 @@ results <- results[order(results[,1]/results[1:48,2]),]
 ES <- results[1:48,1]/results[1:48,2]
 plot(1:48, ES, ylim = c(-1.5,1.5), xlab = "Models")
 abline(h = 0)
-abline(h = 0.5)
 segments(1:48, ES - 1.96*ES, 1:48, ES + 1.96* ES)
 ```
 
